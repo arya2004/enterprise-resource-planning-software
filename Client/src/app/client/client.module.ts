@@ -17,7 +17,8 @@ import { ClientRoutingModule } from './client-routing.module';
   ],
   imports: [
     CommonModule,
-   ClientRoutingModule
+   ClientRoutingModule,
+   RouterModule
   ]
 })
 export class ClientModule { }

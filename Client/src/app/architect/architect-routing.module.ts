@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index/index.component';
 import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
-import { ArchitectRoutingModule } from './architect-routing.module';
-import { RouterModule } from '@angular/router';
+
+const routes: Routes = [
+
+  {path: '', component: IndexComponent},
+  {path: 'new', component: NewComponent},
+  {path: ':id', component: EditComponent},
 
 
+]
 
 @NgModule({
-  declarations: [
-    IndexComponent,
-    NewComponent,
-    EditComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    ArchitectRoutingModule,
-    RouterModule
+    RouterModule.forChild(routes)
   ]
 })
-export class ArchitectModule { }
+export class ArchitectRoutingModule { }
