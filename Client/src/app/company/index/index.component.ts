@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../company.service';
-import { ICompany } from 'src/app/shared/Models/ICompany';
+import { ICompany } from 'src/app/shared/Models/Master/ICompany';
 
 @Component({
   selector: 'app-index',
