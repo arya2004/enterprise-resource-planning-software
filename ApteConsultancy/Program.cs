@@ -1,36 +1,43 @@
+using ApteConsultancy.Data;
 
-namespace ApteConsultancy
-{
-    public class Program
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddDbContext<AppDbContext>(
+    options =>
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    });
+//below maps jwt model to appsettingsjson on sstartup
+//builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("ApiSettings:JwtOptions")); //can be retrieved using dep inj
+//builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddControllers();
 
-            // Add services to the container.
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+var app = builder.Build();
 
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
+// Configure the HTTP request pipeline.
 
 
-            app.MapControllers();
-
-            app.Run();
-        }
-    }
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
