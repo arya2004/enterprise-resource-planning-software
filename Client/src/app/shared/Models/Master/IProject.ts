@@ -1,8 +1,8 @@
-import { IArchitect } from "./Master/IArchitect";
-import { IAssociateUser } from "./Master/IAssociateUser";
-import { IClient } from "./Master/IClient";
-import { ICompany } from "./Master/ICompany";
-import { IEmployeeUser } from "./Master/IEmployeeUser";
+import { IArchitect } from "./IArchitect";
+import { IAssociateUser } from "./IAssociateUser";
+import { IClient } from "./IClient";
+import { ICompany } from "./ICompany";
+import { IEmployeeUser } from "./IEmployeeUser";
 
 export interface IProject {
     projectId?: string; // You can make this optional based on your requirements

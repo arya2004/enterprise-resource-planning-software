@@ -12,6 +12,9 @@ const routes: Routes = [
   {path: 'architect', loadChildren: () => import('./architect/architect.module').then(m => m.ArchitectModule)},
   {path: 'associate', loadChildren: () => import('./associate/associate.module').then(m => m.AssociateModule)},
   {path: 'project', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)},
+  {path: 'attendance', loadChildren: () => import('./attendance/attendance.module').then(m => m.AttendanceModule)},
+  {path: 'drawing', loadChildren: () => import('./drawing/drawing.module').then(m => m.DrawingModule)},
+  {path: 'travel', loadChildren: () => import('./travel/travel.module').then(m => m.TravelModule)},
   {path: 'account', loadChildren: () => import('./master/master.module').then(m => m.MasterModule)},
   { path: '**', component: NotFoundComponent }
 ];
