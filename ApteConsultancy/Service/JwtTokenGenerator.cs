@@ -11,35 +11,41 @@ namespace ApteConsultancy.Service
 {
     public class JwtTokenGenerator : IJwtTokenGenerator
     {
-        private readonly JwtOptions _jwtOptions;
-        public JwtTokenGenerator(IOptions<JwtOptions> jwtOptions)
+
+        private readonly IConfiguration _configuration;
+        private readonly SymmetricSecurityKey _symmetricSecurityKey;
+        public JwtTokenGenerator(IConfiguration configuration)
         {
-            _jwtOptions = jwtOptions.Value;
+            _configuration = configuration;
+            _symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtOptions:Secret"]));
         }
-        public string GenerateToken(ApplicationUser application, IEnumerable<string> roles)
+
+        public string GenerateToken(ApplicationUser user, IEnumerable<string> roles)
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_jwtOptions.Secret);
-            var claimlist = new List<Claim>
+            var claimsList = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Email, application.Email),
-                new Claim(JwtRegisteredClaimNames.Sub, application.Id),
-                new Claim(JwtRegisteredClaimNames.Name, application.UserName.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.GivenName, user.EmployeeName),
+                new Claim(ClaimTypes.NameIdentifier, user.Id)
+
+
+
             };
+            claimsList.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-            claimlist.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-
-            var tokenDescriptor = new SecurityTokenDescriptor()
+            var credential = new SigningCredentials(_symmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature);
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Audience = _jwtOptions.Audience,
-                Issuer = _jwtOptions.Issuer,
-                Subject = new ClaimsIdentity(claimlist),
+                Subject = new ClaimsIdentity(claimsList),
                 Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = credential,
+                Issuer = _configuration["JwtOptions:Issuer"],
+                Audience = _configuration["JwtOptions:Audience"]
             };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-
         }
     }
 }

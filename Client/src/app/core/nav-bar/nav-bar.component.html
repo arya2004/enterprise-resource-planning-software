@@ -24,7 +24,7 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-
+        
         <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
@@ -166,16 +166,26 @@
 
         </li><!-- End Messages Nav -->
 
-        <li class="nav-item dropdown pe-3">
 
+
+        <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" routerLink="/account/login">
+
+          <span class="d-none d-md-block  ps-2">Login</span>
+        </a><!-- End Profile Iamge Icon -->
+      </ng-container>
+
+      <ng-container *ngIf="accountService.currentUser$ | async as user">
+        <li class="nav-item dropdown pe-3">
+          
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
 
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{user.displayName}} </span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
+              <h6>{{user.displayName}} </h6>
               <span>Web Designer</span>
             </li>
             <li>
@@ -202,12 +212,7 @@
               <hr class="dropdown-divider">
             </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
+          
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -215,8 +220,10 @@
            
 
           </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
 
+
+        </li><!-- End Profile Nav -->
+      </ng-container>
       </ul>
     </nav><!-- End Icons Navigation -->
 

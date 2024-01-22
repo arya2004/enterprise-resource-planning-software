@@ -1,8 +1,11 @@
 ﻿using ApteConsultancy.Dto;
+using ApteConsultancy.Model.Master;
 using ApteConsultancy.Service.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Security.Claims;
 namespace ApteConsultancy.Controllers
 {
     [Route("api/[controller]")]
@@ -10,58 +13,111 @@ namespace ApteConsultancy.Controllers
     public class AuthAPIController : ControllerBase
     {
 
+
         private readonly IAuthService _authService;
-        protected ResponseDto _responseDto;
-      
         private readonly IConfiguration _configuration;
-        public AuthAPIController(IAuthService authService, IConfiguration configuration)
+        protected ResponseDto _responseDto;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IJwtTokenGenerator _jwtService;
+        public AuthAPIController(IAuthService authService, IConfiguration configuration, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, IJwtTokenGenerator jwtService)
         {
             _authService = authService;
-            _responseDto = new ResponseDto();
-         
             _configuration = configuration;
+            _responseDto = new ResponseDto();
+            _roleManager = roleManager;
+            _userManager = userManager;
+            _jwtService = jwtService;
+
         }
+
+        [HttpGet("")]
+        public async Task<ActionResult<ResponseDto>> Persistant()
+        {
+            return _responseDto;
+
+        }
+
+        //[Authorize]
+        [HttpGet("GetCurrentUser")]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+
+            var user = await _userManager.FindByEmailAsync(email);
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            return new UserDto
+            {
+                Email = user.Email,
+                Token = _jwtService.GenerateToken(user, roles),
+                Displlayname = user.EmployeeName
+
+            };
+        }
+
+
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterationRequestDto model)
+        public async Task<ActionResult<ResponseDto>> Register([FromBody] RegisterRequestDto registerRequestDto)
         {
-            var errorMessage = await _authService.Register(model);
-            if (!string.IsNullOrEmpty(errorMessage))
+            var Message = await _authService.Register(registerRequestDto);
+            if (!string.IsNullOrEmpty(Message))
             {
+                _responseDto.Message = Message;
                 _responseDto.IsSuccess = false;
-                _responseDto.Message = errorMessage;
                 return BadRequest(_responseDto);
             }
-            
             return Ok(_responseDto);
-        }
 
+        }
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
+        public async Task<ActionResult<ResponseDto>> Login([FromBody] LoginRequestDto loginRequestDto)
         {
-            var loginResponse = await _authService.Login(loginRequestDto);
-            if (loginResponse.Name == null)
+            var Message = await _authService.Login(loginRequestDto);
+            if (Message.Email == null)
             {
                 _responseDto.IsSuccess = false;
-                _responseDto.Message = "incorrecce paswrd or usrnme";
+                _responseDto.Message = "incorrect field";
                 return BadRequest(_responseDto);
             }
-            _responseDto.Result = loginResponse;
+            _responseDto.Result = Message;
+            return _responseDto;
+        }
+
+        [HttpPost("assign")]
+        public async Task<ActionResult<ResponseDto>> Assign([FromBody] RegisterRequestDto registerRequestDto)
+        {
+
+            var result = await _authService.AssignRole(registerRequestDto.Email, registerRequestDto.Role.ToUpper());
+            if (!result) _responseDto.IsSuccess = false;
             return Ok(_responseDto);
         }
 
-        [HttpPost("AssignRole")]
-        public async Task<IActionResult> AssignRole([FromBody] RegisterationRequestDto registerationRequestDto)
+        [HttpGet("user")]
+        public async Task<ActionResult<ResponseDto>> LoadCurrentUser()
         {
-            var assRoleSuccess = await _authService.AssignRole(registerationRequestDto.Email, registerationRequestDto.Role.ToUpper());
-            if (!assRoleSuccess)
-            {
-                _responseDto.IsSuccess = false;
-                _responseDto.Message = "error";
-                return BadRequest(_responseDto);
-            }
+            //var text = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //Console.WriteLine(text);
 
-            return Ok(_responseDto);
+            //var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            //Console.WriteLine(email);
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var user = await _userManager.FindByEmailAsync(email);
+            var roles = await _userManager.GetRolesAsync(user);
+            UserDto dt = new UserDto
+            {
+                Email = user.Email,
+                Token = _jwtService.GenerateToken(user, roles),
+                Displlayname = user.EmployeeName
+
+            };
+            _responseDto.Result = dt;
+            _responseDto.IsSuccess = true;
+            return _responseDto;
         }
+
     }
 }

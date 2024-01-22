@@ -12,29 +12,74 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ApteConsultancy.Model.Master;
+using ApteConsultancy.Data.Initialize;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(
+if (builder.Environment.IsProduction())
+{
+    builder.Services.AddDbContext<AppDbContext>(
     options =>
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
     });
 
-IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
-builder.Services.AddSingleton(mapper); //registered
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//dependency injection
+}
+else
+{
+    builder.Services.AddDbContext<AppDbContext>(
+    options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    });
+}
 
+
+
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
+
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddDefaultTokenProviders()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddSignInManager<SignInManager<ApplicationUser>>();
+
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-//below maps jwt model to appsettingsjson on sstartup
-//builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("ApiSettings:JwtOptions")); //can be retrieved using dep inj
-//builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
-builder.Services.AddControllers();
+;
 
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+//authen before authorizations
+builder.Services.AddAuthentication(x => {
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        //what it checking agaist
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("JwtOptions:Secret"))),
+        ValidIssuer = builder.Configuration.GetValue<string>("JwtOptions:Issuer"),
+        ValidateIssuer = true,
+        ValidateAudience = false,
+        ValidAudience = builder.Configuration.GetValue<string>("JwtOptions:Audience")
+    };
+});
+builder.Services.AddAuthorization();
+
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition(name: JwtBearerDefaults.AuthenticationScheme, securityScheme: new OpenApiSecurityScheme
@@ -61,8 +106,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-
-
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("CorsPolicy", policy =>
@@ -70,50 +113,34 @@ builder.Services.AddCors(opt =>
         policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
     });
 });
-var settingSection = builder.Configuration.GetSection("ApiSettings");
 
-//retrieve secret
-var sevret = settingSection.GetValue<string>("Secret");
-var issuer = settingSection.GetValue<string>("Issuer");
-var audience = settingSection.GetValue<string>("Audience");
-
-var key = Encoding.ASCII.GetBytes(sevret);
-
-builder.Services.AddAuthentication(x =>
-{
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
-{
-    x.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = true,
-        ValidIssuer = issuer,
-        ValidAudience = audience,
-        ValidateAudience = true,
-    };
-});
-builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("CorsPolicy");
+//app.UseHttpsRedirection();
 
-app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+SeedDatabase();
 
 app.MapControllers();
 
 app.Run();
+
+
+
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize(app.Environment.IsProduction());
+    }
+}

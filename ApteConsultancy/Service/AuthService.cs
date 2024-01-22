@@ -8,78 +8,82 @@ namespace ApteConsultancy.Service
 {
     public class AuthService : IAuthService
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly AppDbContext _applicationDbContext;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IJwtTokenGenerator _jwtTokenGenerator;
-        public AuthService(AppDbContext appDbContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IJwtTokenGenerator jwtTokenGenerator)
+        private readonly IJwtTokenGenerator _jwtService;
+        private readonly SignInManager<ApplicationUser> signInManager;
+
+        public AuthService(AppDbContext applicationDbContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IJwtTokenGenerator jwtService, SignInManager<ApplicationUser> signInManager)
         {
-            _appDbContext = appDbContext;
+            _applicationDbContext = applicationDbContext;
             _userManager = userManager;
             _roleManager = roleManager;
-            _jwtTokenGenerator = jwtTokenGenerator;
-
+            _jwtService = jwtService;
+            this.signInManager = signInManager;
         }
 
-        public async Task<bool> AssignRole(string email, string rolenamr)
+        public async Task<bool> AssignRole(string email, string roleName)
         {
-            var user = _appDbContext.applicationUsers.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+            var user = await _userManager.FindByEmailAsync(email);
             if (user != null)
             {
-                if (!_roleManager.RoleExistsAsync(rolenamr).GetAwaiter().GetResult())
+                if (!_roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult())
                 {
-                    _roleManager.CreateAsync(new IdentityRole(rolenamr)).GetAwaiter().GetResult();
+                    _roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
                 }
-                await _userManager.AddToRoleAsync(user, rolenamr);
+                await _userManager.AddToRoleAsync(user, roleName);
                 return true;
             }
             return false;
-
         }
 
-        public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
+        public async Task<UserDto> Login(LoginRequestDto requestDto)
         {
-            var user = _appDbContext.applicationUsers.FirstOrDefault(u => u.UserName.ToLower() == loginRequestDto.UserName.ToLower());
-            bool isValid = await _userManager.CheckPasswordAsync(user, loginRequestDto.Password);
-            if (user == null || isValid == false)
+            var user = await _userManager.FindByEmailAsync(requestDto.Email);
+            if (user == null)
             {
-                return new LoginResponseDto()
+                return new UserDto()
                 {
-                    
+                    Email = null,
+                    Displlayname = null,
                     Token = ""
 
                 };
             }
-            //if user was found, generate jwt tokem
+            var result = await signInManager.CheckPasswordSignInAsync(user, requestDto.Password, false);
+            if (!result.Succeeded)
+            {
+                return new UserDto()
+                {
+                    Email = null,
+                    Displlayname = null,
+                    Token = ""
+
+                };
+            }
             var roles = await _userManager.GetRolesAsync(user);
-            var token = _jwtTokenGenerator.GenerateToken(user, roles);
-   
-            LoginResponseDto loginResponseDto = new LoginResponseDto()
+            return new UserDto
             {
                 Email = user.Email,
-                ID = user.Id,
-                Name = user.EmployeeName,
-                PhoneNumber = user.PhoneNumber,
-                Token = token
+                Token = _jwtService.GenerateToken(user, roles),
+                Displlayname = user.Email
             };
-            return loginResponseDto;
-
-
         }
 
-        public async Task<string> Register(RegisterationRequestDto registerationRequestDto)
+        public async Task<string> Register(RegisterRequestDto requestDto)
         {
             ApplicationUser user = new()
             {
-                UserName = registerationRequestDto.Email,
-                Email = registerationRequestDto.Email,
-                NormalizedEmail = registerationRequestDto.Email.ToUpper(),
-                EmployeeName = registerationRequestDto.Name,
-                PhoneNumber = registerationRequestDto.PhoneNumber,
+                Email = requestDto.Email,
+                UserName = requestDto.Name,
+                EmployeeName = requestDto.Email,
+                NormalizedEmail = requestDto.Email.Normalize()
+
             };
             try
             {
-                var result = await _userManager.CreateAsync(user, registerationRequestDto.Password); //inbuilt func hashes, entries password
+                var result = await _userManager.CreateAsync(user, requestDto.Password);
                 if (result.Succeeded)
                 {
 
@@ -89,14 +93,15 @@ namespace ApteConsultancy.Service
                 {
                     return result.Errors.FirstOrDefault().Description;
                 }
-
             }
             catch (Exception ex)
             {
 
-
+                throw;
             }
-            return "Error encounterrd";
+            return "Error";
         }
+
+
     }
 }
