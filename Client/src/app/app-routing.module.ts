@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArchitectComponent } from './master/architect/architect.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { HasRoleGuard } from './core/guards/has-role.guard';
 
 const routes: Routes = [
   {path: '', title:'Apte', component:ArchitectComponent},
@@ -15,7 +17,8 @@ const routes: Routes = [
   {path: 'attendance', loadChildren: () => import('./attendance/attendance.module').then(m => m.AttendanceModule)},
   {path: 'drawing', loadChildren: () => import('./drawing/drawing.module').then(m => m.DrawingModule)},
   {path: 'travel', loadChildren: () => import('./travel/travel.module').then(m => m.TravelModule)},
-  {path: 'account', loadChildren: () => import('./master/master.module').then(m => m.MasterModule)},
+  {path: 'prot',canActivate:[AuthGuard], loadChildren: () => import('./master/master.module').then(m => m.MasterModule)},
+  {path: 'cat',canActivate:[ HasRoleGuard], data: {role: 'CAT'}, loadChildren: () => import('./master/master.module').then(m => m.MasterModule)},
   { path: '**', component: NotFoundComponent }
 ];
 

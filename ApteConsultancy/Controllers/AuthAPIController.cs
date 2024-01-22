@@ -73,17 +73,17 @@ namespace ApteConsultancy.Controllers
 
         }
         [HttpPost("login")]
-        public async Task<ActionResult<ResponseDto>> Login([FromBody] LoginRequestDto loginRequestDto)
+        public async Task<ActionResult<UserDto>> Login([FromBody] LoginRequestDto loginRequestDto)
         {
             var Message = await _authService.Login(loginRequestDto);
             if (Message.Email == null)
             {
                 _responseDto.IsSuccess = false;
                 _responseDto.Message = "incorrect field";
-                return BadRequest(_responseDto);
+                return BadRequest(  );
             }
             _responseDto.Result = Message;
-            return _responseDto;
+            return Message;
         }
 
         [HttpPost("assign")]
