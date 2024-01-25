@@ -3,6 +3,7 @@ using ApteConsultancy.Models.Master;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace ApteConsultancy.Controllers
 {
@@ -18,7 +19,9 @@ namespace ApteConsultancy.Controllers
         }
         [HttpGet("GetAll")]
         public IActionResult GetAll()
-        {
+        {   
+            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            Console.WriteLine(email);
             List<Company> companies = _appDbContext.Companies.ToList();
             return Ok(companies);
         }

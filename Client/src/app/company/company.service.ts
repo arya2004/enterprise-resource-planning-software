@@ -19,6 +19,8 @@ export class CompanyService {
   GetCompany()
   {
     console.log(this.ApiUri);
+    
+    
     return this.http.get<any>(this.ApiUri + "GetAll");
    
   }

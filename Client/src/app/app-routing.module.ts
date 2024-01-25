@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: 'attendance', loadChildren: () => import('./attendance/attendance.module').then(m => m.AttendanceModule)},
   {path: 'drawing', loadChildren: () => import('./drawing/drawing.module').then(m => m.DrawingModule)},
   {path: 'travel', loadChildren: () => import('./travel/travel.module').then(m => m.TravelModule)},
+  {path: 'timesheet', loadChildren: () => import('./timesheet/timesheet.module').then(m => m.TimesheetModule)},
   {path: 'prot',canActivate:[AuthGuard], loadChildren: () => import('./master/master.module').then(m => m.MasterModule)},
   {path: 'cat',canActivate:[ HasRoleGuard], data: {role: 'CAT'}, loadChildren: () => import('./master/master.module').then(m => m.MasterModule)},
   { path: '**', component: NotFoundComponent }
