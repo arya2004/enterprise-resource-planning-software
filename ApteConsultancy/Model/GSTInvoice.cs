@@ -10,9 +10,9 @@ namespace ApteConsultancy.Models
     public class GSTInvoice
     {
         public int GSTInvoiceId { get; set; }
-        public Project Project { get; set; }
+        public Project? Project { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public string InvoiceNumber { get; set; }
+        public string? InvoiceNumber { get; set; }
         public double Amount { get; set; }
         public double IGST => Amount * 0.18;
         public double SGST => Amount * 0.09;

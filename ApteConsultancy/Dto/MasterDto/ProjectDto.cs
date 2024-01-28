@@ -1,19 +1,16 @@
 ﻿using ApteConsultancy.Model.Master;
-using System.ComponentModel.DataAnnotations;
+using ApteConsultancy.Models.Master;
 
-namespace ApteConsultancy.Models.Master
+namespace ApteConsultancy.Dto.MasterDto
 {
-    public class Project
+    public class ProjectDto
     {
-        [Key]
-        public int? ProjectId { get; set; }
-        public Company?  Company { get; set; }
-
-        //public ApplicationUser? Employee { get; set; }
-        public ICollection<ApplicationUser> ApplicationUsers { get; set; } = new List<ApplicationUser>();
-        public Client? Client { get; set; }
-        public Architect? Architect { get; set; }
-        //public ApplicationUser? Associate { get; set; }
+     
+        public int? CompanyId { get; set; }
+        public ICollection<string>?  AssociateAndEmployees { get; set; }
+        public int? ClientId { get; set; }
+        public int? ArchitectId { get; set; }
+       
 
         public int? ProjectCode { get; set; }
         public string? Name { get; set; }
@@ -27,8 +24,6 @@ namespace ApteConsultancy.Models.Master
         public decimal? FeesBalance { get; set; }
         public decimal? Expenses { get; set; }
         public decimal? ProfitAmount { get; set; }
-        public bool? IsCompleted { get; set; } 
-
-
+        public bool? IsCompleted { get; set; }
     }
 }

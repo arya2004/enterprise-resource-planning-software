@@ -1,36 +1,37 @@
 ﻿using ApteConsultancy.Data;
-using ApteConsultancy.Dto;
 using ApteConsultancy.Dto.MasterDto;
+using ApteConsultancy.Dto;
 using ApteConsultancy.Models.Master;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Runtime.InteropServices;
 using System.Security.Claims;
-
+using ApteConsultancy.Models;
+using Microsoft.EntityFrameworkCore;
+using ApteConsultancy.Dto.AdminDto;
+//Incomplete
 namespace ApteConsultancy.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyController : ControllerBase
+    public class DrawingController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
         private ResponseDto _responseDto;
         private IMapper _mapper;
 
-        public CompanyController(AppDbContext appDbContext, IMapper mapper)
+        public DrawingController(AppDbContext appDbContext, IMapper mapper)
         {
             _appDbContext = appDbContext;
             _responseDto = new ResponseDto();
             _mapper = mapper;
         }
         [HttpGet("GetAll")]
-        public  ActionResult<ResponseDto> GetAll()
-        {   
+        public ActionResult<ResponseDto> GetAll()
+        {
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if(roles == null  || roles.Count == 0 || email == null)
+            if (roles == null || roles.Count == 0 || email == null)
             {
                 _responseDto.Message = "invalid token";
                 _responseDto.IsSuccess = false;
@@ -43,15 +44,15 @@ namespace ApteConsultancy.Controllers
                 return _responseDto;
             }
 
-            List<Company> companies = _appDbContext.Companies.ToList();
-            _responseDto.Result = companies;
+            List<Drawing> Drawings = _appDbContext.Drawings.ToList();
+            _responseDto.Result = Drawings;
             _responseDto.IsSuccess = true;
             return _responseDto;
         }
 
         [HttpGet("GetOne")]
 
-        public async Task<ActionResult<ResponseDto>> Get(string? name)
+        public async Task<ActionResult<ResponseDto>> Get(int? number)
         {
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
@@ -68,17 +69,17 @@ namespace ApteConsultancy.Controllers
                 return _responseDto;
             }
 
-            Company? companies = await _appDbContext.Companies.FirstOrDefaultAsync(_ => _.Name == name);
-            _responseDto.Result = companies;
+            Drawing? Drawings = await _appDbContext.Drawings.FirstOrDefaultAsync(_ => _.DrawingNumber == number);
+            _responseDto.Result = Drawings;
             _responseDto.IsSuccess = true;
             return Ok(_responseDto);
-         
+
         }
 
 
 
         [HttpPost]
-        public async Task<ActionResult<ResponseDto>> Create([FromBody] CompanyDto company)
+        public async Task<ActionResult<ResponseDto>> Create([FromBody] CreateDrawingDto Drawing)
         {
 
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
@@ -96,14 +97,18 @@ namespace ApteConsultancy.Controllers
                 return _responseDto;
             }
 
-            Company companyToSave = _mapper.Map<Company>(company);
+            Drawing DrawingToSave = _mapper.Map<Drawing>(Drawing);
             try
             {
-                _appDbContext.Companies.Add(companyToSave);
+                _appDbContext.Drawings.Add(DrawingToSave);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Added Successfully";
                 _responseDto.IsSuccess = true;
                 return Ok(_responseDto);
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -116,18 +121,18 @@ namespace ApteConsultancy.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Edit(Company company)
+        public async Task<IActionResult> Edit(Drawing Drawing)
         {
-           
-                _appDbContext.Companies.Update(company);
+
+            _appDbContext.Drawings.Update(Drawing);
             await _appDbContext.SaveChangesAsync();
             return Ok("Edited");
         }
 
-      
+
         [HttpDelete]
         [ActionName("Delete")]
-        public async Task<ActionResult<ResponseDto>> Delete(string? name)
+        public async Task<ActionResult<ResponseDto>> Delete(int? number)
         {
 
 
@@ -147,14 +152,14 @@ namespace ApteConsultancy.Controllers
             }
             try
             {
-                Company? company = _appDbContext.Companies.FirstOrDefault(_ => _.Name == name);
-                if (company == null)
+                Drawing? Drawing = _appDbContext.Drawings.FirstOrDefault(_ => _.DrawingNumber == number);
+                if (Drawing == null)
                 {
                     _responseDto.Message = "NOt Found";
                     _responseDto.IsSuccess = false;
                     return NotFound(_responseDto);
                 }
-                _appDbContext.Companies.Remove(company);
+                _appDbContext.Drawings.Remove(Drawing);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Deleted Successfully";
                 _responseDto.IsSuccess = true;
@@ -168,7 +173,7 @@ namespace ApteConsultancy.Controllers
                 return Ok(_responseDto);
             }
 
-          
+
         }
     }
 }

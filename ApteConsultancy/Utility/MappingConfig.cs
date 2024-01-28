@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿using ApteConsultancy.Dto.AdminDto;
+using ApteConsultancy.Dto.EmployeeDto;
+using ApteConsultancy.Dto.MasterDto;
+using ApteConsultancy.Models;
+using ApteConsultancy.Models.Master;
+using AutoMapper;
 
 namespace ApteConsultancy.Utility
 {
@@ -8,6 +13,17 @@ namespace ApteConsultancy.Utility
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
+                config.CreateMap<ProjectDto, Project>().ReverseMap();
+                config.CreateMap<CreateProjectFeesDto, ProjectDto>().ReverseMap();
+                config.CreateMap<CompanyDto, Company>().ReverseMap();
+                config.CreateMap<ClientDto, Client>().ReverseMap();
+                config.CreateMap<ArchitectDto, Architect>().ReverseMap();
+                config.CreateMap<CreateGSTInvoiceDto, GSTInvoice>().ReverseMap();
+                config.CreateMap<CreateProformaInvoiceDto, ProformaInvoice>().ReverseMap();
+                config.CreateMap<CreateAttendanceDto, Employee_Attendance>().ReverseMap();
+                config.CreateMap<CreateOwnCarLocalAndOutStationDto, OwnCarLocalAndOutStation>().ReverseMap();
+                
+
             });
             return mappingConfig;
         }

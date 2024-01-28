@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApteConsultancy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240119024343_INitial")]
-    partial class INitial
+    [Migration("20240128022629_null")]
+    partial class @null
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,21 @@ namespace ApteConsultancy.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ApplicationUserProject", b =>
+                {
+                    b.Property<string>("ApplicationUsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ProjectsProjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ApplicationUsersId", "ProjectsProjectId");
+
+                    b.HasIndex("ProjectsProjectId");
+
+                    b.ToTable("ApplicationUserProject");
+                });
 
             modelBuilder.Entity("ApteConsultancy.Model.Master.ApplicationUser", b =>
                 {
@@ -36,8 +51,8 @@ namespace ApteConsultancy.Migrations
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("AccountType")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("AccountType")
+                        .HasColumnType("int");
 
                     b.Property<string>("AddressLine1")
                         .HasColumnType("nvarchar(max)");
@@ -51,6 +66,9 @@ namespace ApteConsultancy.Migrations
                     b.Property<DateTime>("Anniversary")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Bank")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BankName")
                         .HasColumnType("nvarchar(max)");
 
@@ -60,10 +78,13 @@ namespace ApteConsultancy.Migrations
                     b.Property<string>("BranchAddress")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BranchNam")
+                    b.Property<string>("BranchName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -79,9 +100,21 @@ namespace ApteConsultancy.Migrations
                     b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Designation1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Designation2")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Email1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email2")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -98,8 +131,17 @@ namespace ApteConsultancy.Migrations
                     b.Property<int>("ExpBeforeJoiningY")
                         .HasColumnType("int");
 
+                    b.Property<string>("GstNUmber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ISFCode")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAssociate")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsFreeLancer")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -125,6 +167,9 @@ namespace ApteConsultancy.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("Pan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PanNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
@@ -216,11 +261,11 @@ namespace ApteConsultancy.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DrawingId"));
 
-                    b.Property<string>("ArchitectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ArchitectId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ClientId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("CompanyId")
                         .HasColumnType("int");
@@ -231,8 +276,8 @@ namespace ApteConsultancy.Migrations
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
 
                     b.HasKey("DrawingId");
 
@@ -287,8 +332,8 @@ namespace ApteConsultancy.Migrations
                     b.Property<decimal>("HoursSpent")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("RatePerHour")
                         .HasColumnType("decimal(18,2)");
@@ -349,11 +394,10 @@ namespace ApteConsultancy.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("InvoiceNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
 
                     b.HasKey("GSTInvoiceId");
 
@@ -364,8 +408,11 @@ namespace ApteConsultancy.Migrations
 
             modelBuilder.Entity("ApteConsultancy.Models.Master.Architect", b =>
                 {
-                    b.Property<string>("ArchitectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ArchitectId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ArchitectId"));
 
                     b.Property<string>("AddressLine1")
                         .HasColumnType("nvarchar(max)");
@@ -555,8 +602,11 @@ namespace ApteConsultancy.Migrations
 
             modelBuilder.Entity("ApteConsultancy.Models.Master.Client", b =>
                 {
-                    b.Property<string>("ClientId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ClientId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ClientId"));
 
                     b.Property<string>("AddressLine1")
                         .HasColumnType("nvarchar(max)");
@@ -814,26 +864,23 @@ namespace ApteConsultancy.Migrations
 
             modelBuilder.Entity("ApteConsultancy.Models.Master.Project", b =>
                 {
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ProjectId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Property<string>("ArchitectId")
-                        .HasColumnType("nvarchar(450)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ProjectId"));
 
-                    b.Property<string>("AssociateId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ArchitectId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ClientId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ClientWoNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CompanyId")
                         .HasColumnType("int");
-
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("End")
                         .HasColumnType("datetime2");
@@ -875,13 +922,9 @@ namespace ApteConsultancy.Migrations
 
                     b.HasIndex("ArchitectId");
 
-                    b.HasIndex("AssociateId");
-
                     b.HasIndex("ClientId");
 
                     b.HasIndex("CompanyId");
-
-                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Projects");
                 });
@@ -915,8 +958,8 @@ namespace ApteConsultancy.Migrations
                     b.Property<decimal>("PetrolRate")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
 
                     b.Property<decimal?>("PublicTransport")
                         .HasColumnType("decimal(18,2)");
@@ -962,8 +1005,8 @@ namespace ApteConsultancy.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
 
                     b.HasKey("ProformaInvoiceId");
 
@@ -983,8 +1026,8 @@ namespace ApteConsultancy.Migrations
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
 
                     b.Property<double>("TDSAmount")
                         .HasColumnType("float");
@@ -1016,8 +1059,8 @@ namespace ApteConsultancy.Migrations
                     b.Property<string>("AssociateUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Service")
                         .HasColumnType("nvarchar(max)");
@@ -1176,6 +1219,21 @@ namespace ApteConsultancy.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ApplicationUserProject", b =>
+                {
+                    b.HasOne("ApteConsultancy.Model.Master.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("ApplicationUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ApteConsultancy.Models.Master.Project", null)
+                        .WithMany()
+                        .HasForeignKey("ProjectsProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ApteConsultancy.Models.Associate_Fee", b =>
                 {
                     b.HasOne("ApteConsultancy.Models.Master.AssociateUser", "Associate")
@@ -1264,10 +1322,6 @@ namespace ApteConsultancy.Migrations
                         .WithMany()
                         .HasForeignKey("ArchitectId");
 
-                    b.HasOne("ApteConsultancy.Models.Master.AssociateUser", "Associate")
-                        .WithMany()
-                        .HasForeignKey("AssociateId");
-
                     b.HasOne("ApteConsultancy.Models.Master.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId");
@@ -1276,19 +1330,11 @@ namespace ApteConsultancy.Migrations
                         .WithMany()
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("ApteConsultancy.Models.Master.EmployeeUser", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId");
-
                     b.Navigation("Architect");
-
-                    b.Navigation("Associate");
 
                     b.Navigation("Client");
 
                     b.Navigation("Company");
-
-                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("ApteConsultancy.Models.OwnCarLocalAndOutStation", b =>
@@ -1310,7 +1356,9 @@ namespace ApteConsultancy.Migrations
                 {
                     b.HasOne("ApteConsultancy.Models.Master.Project", "Project")
                         .WithMany()
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Project");
                 });

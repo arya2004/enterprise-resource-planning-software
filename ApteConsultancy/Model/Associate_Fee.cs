@@ -1,4 +1,5 @@
-﻿using ApteConsultancy.Models.Master;
+﻿using ApteConsultancy.Model.Master;
+using ApteConsultancy.Models.Master;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ApteConsultancy.Models
     public class Associate_Fee
     {
         public int Associate_FeeId { get; set; }
-        public AssociateUser Associate { get; set; }
+        public ApplicationUser? Associate { get; set; }
         public double Project_Fee { get; set; }
         public DateTime Transaction_Date { get; set; }
         public string Transaction_Type { get; set;}

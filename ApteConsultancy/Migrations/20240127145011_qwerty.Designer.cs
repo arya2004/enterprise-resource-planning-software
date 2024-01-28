@@ -4,6 +4,7 @@ using ApteConsultancy.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApteConsultancy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240127145011_qwerty")]
+    partial class qwerty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -367,7 +370,6 @@ namespace ApteConsultancy.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EmployeeId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Employee_AttendanceId");
@@ -392,9 +394,10 @@ namespace ApteConsultancy.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("InvoiceNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.HasKey("GSTInvoiceId");
@@ -469,6 +472,133 @@ namespace ApteConsultancy.Migrations
                     b.HasKey("ArchitectId");
 
                     b.ToTable("Architects");
+                });
+
+            modelBuilder.Entity("ApteConsultancy.Models.Master.AssociateUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AccountNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AccountType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AddressLine1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Bank")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BranchAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BranchName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactPerson1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactPerson2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Designation1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Designation2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("GstNUmber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ISFCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsFreeLancer")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("MobileNumber1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MobileNumber2")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PanNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PostalCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssociateUser");
                 });
 
             modelBuilder.Entity("ApteConsultancy.Models.Master.Client", b =>
@@ -595,6 +725,142 @@ namespace ApteConsultancy.Migrations
                     b.HasKey("CompanyId");
 
                     b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("ApteConsultancy.Models.Master.EmployeeUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AccountNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AccountType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Anniversary")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("BankName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("BranchAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BranchNam")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactPerson1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactPerson2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("EmployeeCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ExpBeforeJoiningM")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpBeforeJoiningY")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ISFCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("MobileNumber1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MobileNumber2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MonthlySalary")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PostalCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Relation1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Relation2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployeeUser");
                 });
 
             modelBuilder.Entity("ApteConsultancy.Models.Master.Project", b =>
@@ -971,7 +1237,7 @@ namespace ApteConsultancy.Migrations
 
             modelBuilder.Entity("ApteConsultancy.Models.Associate_Fee", b =>
                 {
-                    b.HasOne("ApteConsultancy.Model.Master.ApplicationUser", "Associate")
+                    b.HasOne("ApteConsultancy.Models.Master.AssociateUser", "Associate")
                         .WithMany()
                         .HasForeignKey("AssociateId");
 
@@ -992,7 +1258,7 @@ namespace ApteConsultancy.Migrations
                         .WithMany()
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("ApteConsultancy.Model.Master.ApplicationUser", "Employee")
+                    b.HasOne("ApteConsultancy.Models.Master.EmployeeUser", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
 
@@ -1013,16 +1279,14 @@ namespace ApteConsultancy.Migrations
 
             modelBuilder.Entity("ApteConsultancy.Models.DrawingRevision", b =>
                 {
-                    b.HasOne("ApteConsultancy.Models.Drawing", "Drawing")
+                    b.HasOne("ApteConsultancy.Models.Drawing", null)
                         .WithMany("DrawingRevisions")
                         .HasForeignKey("DrawingId");
-
-                    b.Navigation("Drawing");
                 });
 
             modelBuilder.Entity("ApteConsultancy.Models.EmployeeTimeSheet", b =>
                 {
-                    b.HasOne("ApteConsultancy.Model.Master.ApplicationUser", "Employee")
+                    b.HasOne("ApteConsultancy.Models.Master.EmployeeUser", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
 
@@ -1037,11 +1301,9 @@ namespace ApteConsultancy.Migrations
 
             modelBuilder.Entity("ApteConsultancy.Models.Employee_Attendance", b =>
                 {
-                    b.HasOne("ApteConsultancy.Model.Master.ApplicationUser", "Employee")
+                    b.HasOne("ApteConsultancy.Models.Master.EmployeeUser", "Employee")
                         .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.Navigation("Employee");
                 });
@@ -1050,7 +1312,9 @@ namespace ApteConsultancy.Migrations
                 {
                     b.HasOne("ApteConsultancy.Models.Master.Project", "Project")
                         .WithMany()
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Project");
                 });
@@ -1078,7 +1342,7 @@ namespace ApteConsultancy.Migrations
 
             modelBuilder.Entity("ApteConsultancy.Models.OwnCarLocalAndOutStation", b =>
                 {
-                    b.HasOne("ApteConsultancy.Model.Master.ApplicationUser", "Employee")
+                    b.HasOne("ApteConsultancy.Models.Master.EmployeeUser", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
 
@@ -1113,7 +1377,7 @@ namespace ApteConsultancy.Migrations
 
             modelBuilder.Entity("ApteConsultancyWEB.Models.AssociateWorkerOrders", b =>
                 {
-                    b.HasOne("ApteConsultancy.Model.Master.ApplicationUser", "AssociateUser")
+                    b.HasOne("ApteConsultancy.Models.Master.AssociateUser", "AssociateUser")
                         .WithMany()
                         .HasForeignKey("AssociateUserId");
 

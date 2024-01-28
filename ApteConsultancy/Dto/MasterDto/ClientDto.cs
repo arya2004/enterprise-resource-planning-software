@@ -1,13 +1,14 @@
-﻿    using Microsoft.AspNetCore.Identity;
-
-namespace ApteConsultancy.Models.Master
+﻿namespace ApteConsultancy.Dto.MasterDto
 {
-    public class AssociateUser : IdentityUser
+    public class ClientDto
     {
-        
-        public string? CompanyName { get; set; } = Guid.NewGuid().ToString();
+        public int? ClientId { get; set; }
+        public string? ClientName { get; set; }
+
         public string? AddressLine1 { get; set; }
+
         public string? AddressLine2 { get; set; }
+
         public string? AddressLine3 { get; set; }
         public string? City { get; set; }
         public string? State { get; set; }
@@ -23,14 +24,5 @@ namespace ApteConsultancy.Models.Master
         public string? Email2 { get; set; }
         public string? PanNumber { get; set; }
         public string? GstNUmber { get; set; }
-        public string? Bank { get; set; }
-        public string? BranchName { get; set; }
-        public string? BranchAddress { get; set; }
-        public int AccountNumber { get; set; }
-        public string? ISFCode { get; set; }
-        public int AccountType { get; set; }
-        public bool IsFreeLancer { get; set; }
-
-
     }
 }

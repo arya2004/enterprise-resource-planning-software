@@ -1,36 +1,36 @@
 ﻿using ApteConsultancy.Data;
+using ApteConsultancy.Dto.EmployeeDto;
 using ApteConsultancy.Dto;
-using ApteConsultancy.Dto.MasterDto;
-using ApteConsultancy.Models.Master;
+using ApteConsultancy.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Runtime.InteropServices;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
+using ApteConsultancy.Dto.AdminDto;
 
 namespace ApteConsultancy.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyController : ControllerBase
+    public class ProjectFeesController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
         private ResponseDto _responseDto;
         private IMapper _mapper;
 
-        public CompanyController(AppDbContext appDbContext, IMapper mapper)
+        public ProjectFeesController(AppDbContext appDbContext, IMapper mapper)
         {
             _appDbContext = appDbContext;
             _responseDto = new ResponseDto();
             _mapper = mapper;
         }
         [HttpGet("GetAll")]
-        public  ActionResult<ResponseDto> GetAll()
-        {   
+        public ActionResult<ResponseDto> GetAll()
+        {
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if(roles == null  || roles.Count == 0 || email == null)
+            if (roles == null || roles.Count == 0 || email == null)
             {
                 _responseDto.Message = "invalid token";
                 _responseDto.IsSuccess = false;
@@ -43,15 +43,15 @@ namespace ApteConsultancy.Controllers
                 return _responseDto;
             }
 
-            List<Company> companies = _appDbContext.Companies.ToList();
-            _responseDto.Result = companies;
+            List<ProjectFees> Projects = _appDbContext.ProjectFees.ToList();
+            _responseDto.Result = Projects;
             _responseDto.IsSuccess = true;
             return _responseDto;
         }
 
         [HttpGet("GetOne")]
 
-        public async Task<ActionResult<ResponseDto>> Get(string? name)
+        public async Task<ActionResult<ResponseDto>> Get(int? number)
         {
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
@@ -68,17 +68,19 @@ namespace ApteConsultancy.Controllers
                 return _responseDto;
             }
 
-            Company? companies = await _appDbContext.Companies.FirstOrDefaultAsync(_ => _.Name == name);
-            _responseDto.Result = companies;
+            ProjectFees? Projects = await _appDbContext.ProjectFees.Include(_ => _.Project).FirstOrDefaultAsync(_ => _.ProjectFeesId == number);
+            _responseDto.Result = Projects;
             _responseDto.IsSuccess = true;
             return Ok(_responseDto);
-         
+
         }
 
 
 
-        [HttpPost]
-        public async Task<ActionResult<ResponseDto>> Create([FromBody] CompanyDto company)
+
+
+        [HttpPost("Create")]
+        public async Task<ActionResult<ResponseDto>> Create([FromBody] CreateProjectFeesDto Project)
         {
 
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
@@ -89,17 +91,19 @@ namespace ApteConsultancy.Controllers
                 _responseDto.IsSuccess = false;
                 return _responseDto;
             }
-            if (!roles.Contains("ADMIN"))
+            if (!roles.Contains("EMPLOYEE"))
             {
                 _responseDto.Message = "unauthorized";
                 _responseDto.IsSuccess = false;
                 return _responseDto;
             }
 
-            Company companyToSave = _mapper.Map<Company>(company);
+            ProjectFees ProjectToSave = _mapper.Map<ProjectFees>(Project);
+            var project = await _appDbContext.Projects.FirstOrDefaultAsync(_ => _.ProjectId == Project.ProjectId);
+            ProjectToSave.Project = project;
             try
             {
-                _appDbContext.Companies.Add(companyToSave);
+                _appDbContext.ProjectFees.Add(ProjectToSave);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Added Successfully";
                 _responseDto.IsSuccess = true;
@@ -115,19 +119,50 @@ namespace ApteConsultancy.Controllers
 
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Edit(Company company)
+        [HttpPut("Update")]
+        public async Task<ActionResult<ResponseDto>> Edit(ProjectFees Project)
         {
-           
-                _appDbContext.Companies.Update(company);
-            await _appDbContext.SaveChangesAsync();
-            return Ok("Edited");
+            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            if (roles == null || roles.Count == 0 || email == null)
+            {
+                _responseDto.Message = "invalid token";
+                _responseDto.IsSuccess = false;
+                return _responseDto;
+            }
+            if (!roles.Contains("ADMIN"))
+            {
+                _responseDto.Message = "unauthorized";
+                _responseDto.IsSuccess = false;
+                return _responseDto;
+            }
+
+            ProjectFees ProjectToSave = _mapper.Map<ProjectFees>(Project);
+            try
+            {
+                _appDbContext.ProjectFees.Update(ProjectToSave);
+                await _appDbContext.SaveChangesAsync();
+                _responseDto.Message = "Updated Successfully";
+                _responseDto.IsSuccess = true;
+                return Ok(_responseDto);
+            }
+            catch (Exception ex)
+            {
+
+                _responseDto.Message = ex.Message;
+                _responseDto.IsSuccess = false;
+                return Ok(_responseDto);
+            }
+
+
+
+
         }
 
-      
+
         [HttpDelete]
         [ActionName("Delete")]
-        public async Task<ActionResult<ResponseDto>> Delete(string? name)
+        public async Task<ActionResult<ResponseDto>> Delete(int? number)
         {
 
 
@@ -147,14 +182,14 @@ namespace ApteConsultancy.Controllers
             }
             try
             {
-                Company? company = _appDbContext.Companies.FirstOrDefault(_ => _.Name == name);
-                if (company == null)
+                ProjectFees? Project = _appDbContext.ProjectFees.FirstOrDefault(_ => _.ProjectFeesId== number);
+                if (Project == null)
                 {
                     _responseDto.Message = "NOt Found";
                     _responseDto.IsSuccess = false;
                     return NotFound(_responseDto);
                 }
-                _appDbContext.Companies.Remove(company);
+                _appDbContext.ProjectFees.Remove(Project);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Deleted Successfully";
                 _responseDto.IsSuccess = true;
@@ -168,7 +203,7 @@ namespace ApteConsultancy.Controllers
                 return Ok(_responseDto);
             }
 
-          
+
         }
     }
 }

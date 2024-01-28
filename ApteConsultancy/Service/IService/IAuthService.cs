@@ -1,5 +1,6 @@
 ﻿using ApteConsultancy.Dto;
 
+
 namespace ApteConsultancy.Service.IService
 {
     public interface IAuthService

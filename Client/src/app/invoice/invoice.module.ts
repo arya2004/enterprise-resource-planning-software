@@ -6,6 +6,8 @@ import { GstEditComponent } from './gst-edit/gst-edit.component';
 import { ProformaIndexComponent } from './proforma-index/proforma-index.component';
 import { ProformaNewComponent } from './proforma-new/proforma-new.component';
 import { ProformaEditComponent } from './proforma-edit/proforma-edit.component';
+import { RouterModule } from '@angular/router';
+import { InvoiceRoutingModule } from './invoice-routing.module';
 
 
 
@@ -19,7 +21,9 @@ import { ProformaEditComponent } from './proforma-edit/proforma-edit.component';
     ProformaEditComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    InvoiceRoutingModule
   ]
 })
 export class InvoiceModule { }

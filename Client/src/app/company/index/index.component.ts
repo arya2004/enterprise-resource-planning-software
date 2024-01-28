@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
   {
     this.companyService.GetCompany().subscribe({
       next: res => {
-      this.company = res;
+      this.company = res.result;
     },
   
     error: err => console.log(err)

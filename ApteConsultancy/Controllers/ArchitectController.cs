@@ -1,36 +1,35 @@
 ﻿using ApteConsultancy.Data;
-using ApteConsultancy.Dto;
 using ApteConsultancy.Dto.MasterDto;
+using ApteConsultancy.Dto;
 using ApteConsultancy.Models.Master;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Runtime.InteropServices;
 using System.Security.Claims;
 
 namespace ApteConsultancy.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyController : ControllerBase
+    public class ArchitectController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
         private ResponseDto _responseDto;
         private IMapper _mapper;
 
-        public CompanyController(AppDbContext appDbContext, IMapper mapper)
+        public ArchitectController(AppDbContext appDbContext, IMapper mapper)
         {
             _appDbContext = appDbContext;
             _responseDto = new ResponseDto();
             _mapper = mapper;
         }
         [HttpGet("GetAll")]
-        public  ActionResult<ResponseDto> GetAll()
-        {   
+        public ActionResult<ResponseDto> GetAll()
+        {
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if(roles == null  || roles.Count == 0 || email == null)
+            if (roles == null || roles.Count == 0 || email == null)
             {
                 _responseDto.Message = "invalid token";
                 _responseDto.IsSuccess = false;
@@ -43,8 +42,8 @@ namespace ApteConsultancy.Controllers
                 return _responseDto;
             }
 
-            List<Company> companies = _appDbContext.Companies.ToList();
-            _responseDto.Result = companies;
+            List<Architect> Architects = _appDbContext.Architects.ToList();
+            _responseDto.Result = Architects;
             _responseDto.IsSuccess = true;
             return _responseDto;
         }
@@ -68,17 +67,17 @@ namespace ApteConsultancy.Controllers
                 return _responseDto;
             }
 
-            Company? companies = await _appDbContext.Companies.FirstOrDefaultAsync(_ => _.Name == name);
-            _responseDto.Result = companies;
+            Architect? Architects = await _appDbContext.Architects.FirstOrDefaultAsync(_ => _.CompanyName == name);
+            _responseDto.Result = Architects;
             _responseDto.IsSuccess = true;
             return Ok(_responseDto);
-         
+
         }
 
 
 
         [HttpPost]
-        public async Task<ActionResult<ResponseDto>> Create([FromBody] CompanyDto company)
+        public async Task<ActionResult<ResponseDto>> Create([FromBody] ArchitectDto Architect)
         {
 
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
@@ -96,10 +95,10 @@ namespace ApteConsultancy.Controllers
                 return _responseDto;
             }
 
-            Company companyToSave = _mapper.Map<Company>(company);
+            Architect ArchitectToSave = _mapper.Map<Architect>(Architect);
             try
             {
-                _appDbContext.Companies.Add(companyToSave);
+                _appDbContext.Architects.Add(ArchitectToSave);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Added Successfully";
                 _responseDto.IsSuccess = true;
@@ -116,15 +115,15 @@ namespace ApteConsultancy.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Edit(Company company)
+        public async Task<IActionResult> Edit(Architect Architect)
         {
-           
-                _appDbContext.Companies.Update(company);
+
+            _appDbContext.Architects.Update(Architect);
             await _appDbContext.SaveChangesAsync();
             return Ok("Edited");
         }
 
-      
+
         [HttpDelete]
         [ActionName("Delete")]
         public async Task<ActionResult<ResponseDto>> Delete(string? name)
@@ -147,14 +146,14 @@ namespace ApteConsultancy.Controllers
             }
             try
             {
-                Company? company = _appDbContext.Companies.FirstOrDefault(_ => _.Name == name);
-                if (company == null)
+                Architect? Architect = _appDbContext.Architects.FirstOrDefault(_ => _.CompanyName == name);
+                if (Architect == null)
                 {
                     _responseDto.Message = "NOt Found";
                     _responseDto.IsSuccess = false;
                     return NotFound(_responseDto);
                 }
-                _appDbContext.Companies.Remove(company);
+                _appDbContext.Architects.Remove(Architect);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Deleted Successfully";
                 _responseDto.IsSuccess = true;
@@ -168,7 +167,7 @@ namespace ApteConsultancy.Controllers
                 return Ok(_responseDto);
             }
 
-          
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ApteConsultancy.Models.Master;
+﻿using ApteConsultancy.Model.Master;
+using ApteConsultancy.Models.Master;
 
 namespace ApteConsultancyWEB.Models
 {
@@ -6,7 +7,7 @@ namespace ApteConsultancyWEB.Models
     {
         public int AssociateWorkerOrdersId { get; set; }
         public Project? Project { get; set; }
-        public AssociateUser? AssociateUser { get; set; }
+        public ApplicationUser? AssociateUser { get; set; }
         public string? WorkOrderNumber { get; set; }
         public decimal? WoAmmount { get; set; }
         public string? Service { get; set; }

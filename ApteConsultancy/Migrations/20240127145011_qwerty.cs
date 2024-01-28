@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ApteConsultancy.Migrations
 {
     /// <inheritdoc />
-    public partial class INitial : Migration
+    public partial class qwerty : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,8 @@ namespace ApteConsultancy.Migrations
                 name: "Architects",
                 columns: table => new
                 {
-                    ArchitectId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ArchitectId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressLine1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressLine2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -59,21 +60,14 @@ namespace ApteConsultancy.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsAssociate = table.Column<bool>(type: "bit", nullable: false),
                     EmployeeCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmployeeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressLine1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressLine2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressLine3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PostalCode = table.Column<int>(type: "int", nullable: false),
-                    ContactPerson1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Relation1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MobileNumber1 = table.Column<int>(type: "int", nullable: false),
-                    ContactPerson2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Relation2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MobileNumber2 = table.Column<int>(type: "int", nullable: false),
                     ExpBeforeJoiningY = table.Column<int>(type: "int", nullable: false),
                     ExpBeforeJoiningM = table.Column<int>(type: "int", nullable: false),
                     Pan = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -81,12 +75,29 @@ namespace ApteConsultancy.Migrations
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Anniversary = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BankName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BranchNam = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MonthlySalary = table.Column<int>(type: "int", nullable: false),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Designation1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Designation2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PanNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GstNUmber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Bank = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsFreeLancer = table.Column<bool>(type: "bit", nullable: false),
+                    BranchName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostalCode = table.Column<int>(type: "int", nullable: false),
+                    ContactPerson1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MobileNumber1 = table.Column<int>(type: "int", nullable: false),
+                    ContactPerson2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MobileNumber2 = table.Column<int>(type: "int", nullable: false),
                     BranchAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AccountNumber = table.Column<int>(type: "int", nullable: false),
                     ISFCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AccountType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MonthlySalary = table.Column<int>(type: "int", nullable: false),
+                    AccountType = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -161,7 +172,8 @@ namespace ApteConsultancy.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    ClientId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClientId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ClientName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressLine1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressLine2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -396,35 +408,14 @@ namespace ApteConsultancy.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Employee_Attendances",
-                columns: table => new
-                {
-                    Employee_AttendanceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Attendance_Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employee_Attendances", x => x.Employee_AttendanceId);
-                    table.ForeignKey(
-                        name: "FK_Employee_Attendances_EmployeeUser_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "EmployeeUser",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
-                    ProjectId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProjectId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CompanyId = table.Column<int>(type: "int", nullable: true),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ClientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ArchitectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    AssociateId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClientId = table.Column<int>(type: "int", nullable: true),
+                    ArchitectId = table.Column<int>(type: "int", nullable: true),
                     ProjectCode = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ClientWoNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -448,11 +439,6 @@ namespace ApteConsultancy.Migrations
                         principalTable: "Architects",
                         principalColumn: "ArchitectId");
                     table.ForeignKey(
-                        name: "FK_Projects_AssociateUser_AssociateId",
-                        column: x => x.AssociateId,
-                        principalTable: "AssociateUser",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_Projects_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
@@ -462,11 +448,50 @@ namespace ApteConsultancy.Migrations
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "CompanyId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employee_Attendances",
+                columns: table => new
+                {
+                    Employee_AttendanceId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Attendance_Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employee_Attendances", x => x.Employee_AttendanceId);
                     table.ForeignKey(
-                        name: "FK_Projects_EmployeeUser_EmployeeId",
+                        name: "FK_Employee_Attendances_EmployeeUser_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "EmployeeUser",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ApplicationUserProject",
+                columns: table => new
+                {
+                    ApplicationUsersId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProjectsProjectId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApplicationUserProject", x => new { x.ApplicationUsersId, x.ProjectsProjectId });
+                    table.ForeignKey(
+                        name: "FK_ApplicationUserProject_AspNetUsers_ApplicationUsersId",
+                        column: x => x.ApplicationUsersId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ApplicationUserProject_Projects_ProjectsProjectId",
+                        column: x => x.ProjectsProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "ProjectId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -475,7 +500,7 @@ namespace ApteConsultancy.Migrations
                 {
                     AssociateWorkerOrdersId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: true),
                     AssociateUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     WorkOrderNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WoAmmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
@@ -504,11 +529,11 @@ namespace ApteConsultancy.Migrations
                 {
                     DrawingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: true),
                     CompanyId = table.Column<int>(type: "int", nullable: true),
                     EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ClientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ArchitectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClientId = table.Column<int>(type: "int", nullable: true),
+                    ArchitectId = table.Column<int>(type: "int", nullable: true),
                     DrawingNumber = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -548,7 +573,7 @@ namespace ApteConsultancy.Migrations
                     EmployeeTimeSheetId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ProjectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: true),
                     WorkDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     WorkDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HoursSpent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -575,7 +600,7 @@ namespace ApteConsultancy.Migrations
                 {
                     GSTInvoiceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: false),
                     InvoiceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InvoiceNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false)
@@ -587,7 +612,8 @@ namespace ApteConsultancy.Migrations
                         name: "FK_GSTInvoices_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "ProjectId");
+                        principalColumn: "ProjectId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -596,7 +622,7 @@ namespace ApteConsultancy.Migrations
                 {
                     OwnCarLocalAndOutStationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: true),
                     EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     PetrolRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CarAvgKMPL = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -628,7 +654,7 @@ namespace ApteConsultancy.Migrations
                 {
                     ProformaInvoiceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: false),
                     InvoiceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InvoiceNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
@@ -643,7 +669,8 @@ namespace ApteConsultancy.Migrations
                         name: "FK_ProformaInvoices_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "ProjectId");
+                        principalColumn: "ProjectId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -652,7 +679,7 @@ namespace ApteConsultancy.Migrations
                 {
                     ProjectFeesId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: true),
                     TRXDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TRXno = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -688,6 +715,11 @@ namespace ApteConsultancy.Migrations
                         principalTable: "Drawings",
                         principalColumn: "DrawingId");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApplicationUserProject_ProjectsProjectId",
+                table: "ApplicationUserProject",
+                column: "ProjectsProjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -819,11 +851,6 @@ namespace ApteConsultancy.Migrations
                 column: "ArchitectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_AssociateId",
-                table: "Projects",
-                column: "AssociateId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Projects_ClientId",
                 table: "Projects",
                 column: "ClientId");
@@ -832,16 +859,14 @@ namespace ApteConsultancy.Migrations
                 name: "IX_Projects_CompanyId",
                 table: "Projects",
                 column: "CompanyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects_EmployeeId",
-                table: "Projects",
-                column: "EmployeeId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ApplicationUserProject");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -891,7 +916,13 @@ namespace ApteConsultancy.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "AssociateUser");
+
+            migrationBuilder.DropTable(
                 name: "Drawings");
+
+            migrationBuilder.DropTable(
+                name: "EmployeeUser");
 
             migrationBuilder.DropTable(
                 name: "Projects");
@@ -900,16 +931,10 @@ namespace ApteConsultancy.Migrations
                 name: "Architects");
 
             migrationBuilder.DropTable(
-                name: "AssociateUser");
-
-            migrationBuilder.DropTable(
                 name: "Clients");
 
             migrationBuilder.DropTable(
                 name: "Companies");
-
-            migrationBuilder.DropTable(
-                name: "EmployeeUser");
         }
     }
 }

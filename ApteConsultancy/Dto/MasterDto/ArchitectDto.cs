@@ -1,11 +1,9 @@
-﻿    using Microsoft.AspNetCore.Identity;
-
-namespace ApteConsultancy.Models.Master
+﻿namespace ApteConsultancy.Dto.MasterDto
 {
-    public class AssociateUser : IdentityUser
+    public class ArchitectDto
     {
-        
-        public string? CompanyName { get; set; } = Guid.NewGuid().ToString();
+        public int? ArchitectId { get; set; }
+        public string? CompanyName { get; set; }
         public string? AddressLine1 { get; set; }
         public string? AddressLine2 { get; set; }
         public string? AddressLine3 { get; set; }
@@ -23,14 +21,6 @@ namespace ApteConsultancy.Models.Master
         public string? Email2 { get; set; }
         public string? PanNumber { get; set; }
         public string? GstNUmber { get; set; }
-        public string? Bank { get; set; }
-        public string? BranchName { get; set; }
-        public string? BranchAddress { get; set; }
-        public int AccountNumber { get; set; }
-        public string? ISFCode { get; set; }
-        public int AccountType { get; set; }
-        public bool IsFreeLancer { get; set; }
-
 
     }
 }

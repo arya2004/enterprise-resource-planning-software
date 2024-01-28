@@ -15,7 +15,7 @@ namespace ApteConsultancy.Data
 
         }
 
-        public DbSet<ApplicationUser> applicationUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
   
         public DbSet<Architect> Architects { get; set; }
         public DbSet<Client> Clients { get; set; }

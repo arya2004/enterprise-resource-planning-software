@@ -1,13 +1,11 @@
 ﻿using ApteConsultancy.Model.Master;
-using ApteConsultancy.Models.Master;
 
-namespace ApteConsultancy.Models
+namespace ApteConsultancy.Dto.EmployeeDto
 {
-    public class OwnCarLocalAndOutStation
+    public class CreateOwnCarLocalAndOutStationDto
     {
-        public int OwnCarLocalAndOutStationId { get; set; }
-        public Project? Project { get; set; }
-        public ApplicationUser? Employee { get; set; }
+     
+        public int? ProjectId { get; set; }
         public decimal PetrolRate { get; set; }
         public decimal CarAvgKMPL { get; set; }
         public decimal DistanceTravelled { get; set; }
