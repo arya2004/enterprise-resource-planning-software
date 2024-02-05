@@ -16,7 +16,6 @@ export class IndexComponent implements OnInit {
     this.getAllCompany();
   }
 
-
   getAllCompany()
   {
     this.companyService.GetCompany().subscribe({
