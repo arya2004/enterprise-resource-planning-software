@@ -59,9 +59,21 @@
                <!-- Multi Columns Form -->
               <form class="row g-3">
                 <div class="col-md-12">
-                  <label for="inputName5" class="form-label">Company Code</label>
-                  <input type="text" class="form-control" id="inputName5">
+                  <label class="form-label">Company Code</label>
+             
+                    <select class="form-select" aria-label="Default select example" formControlName="project">
+                      <option value="null" selected></option>
+                      <option value="A34345">Project One</option>
+                      <option value="B345">Project Two</option>
+                      <option value="C678967">Project Three </option>
+                      <option value="D46456">Project Four </option>
+                      <option value="E5767">FIce </option>
+                      <option value="F42364">six </option>
+                      <option value="G0001">Seven</option>
+                    </select>
+               
                 </div>
+
               
                   <div class="col-md-12">
                     <label for="inputName5" class="form-label">CLient Code</label>
@@ -173,16 +185,28 @@
                  
                    
                      
-                  <h5 class="card-title">Employee</h5>
+                  <h5 class="card-title">Assign Employee</h5>
 
                   <div class="add-employees-form" [formGroup]="form">
                     <ng-container formArrayName="employees">
                       <ng-container *ngFor="let lessonForm of $any(employees).controls; let i = index">
                         <div class="lesson-form-row" [formGroup]="lessonForm">
                           <div class="row">
-                            <div class="form-floating mb-3">
-                              <textarea class="form-control" formControlName="input" placeholder="Input Case" id="floatingTextarea" style="height: 100px;"></textarea>
-                              <label for="floatingTextarea">Input Case</label>
+                            <div class="col-md-12 mb-2">
+                              <label class="form-label">Employee Code</label>
+                         
+                                <select class="form-select" aria-label="Default select example" formControlName="input">
+                                  <option value="null" selected></option>
+                                  <option value="A34345">Project One</option>
+                                  <option value="B345">Project Two</option>
+                                  <option value="C678967">Project Three </option>
+                                  <option value="D46456">Project Four </option>
+                                  <option value="E5767">FIce </option>
+                                  <option value="F42364">six </option>
+                                  <option value="G0001">Seven</option>
+                                  
+                                </select>
+                           
                             </div>
                           
                           </div>
@@ -228,9 +252,21 @@
                           <ng-container *ngFor="let lessonForm of $any(associate).controls; let i = index">
                             <div class="lesson-form-row" [formGroup]="lessonForm">
                               <div class="row">
-                                <div class="form-floating mb-3">
-                                  <textarea class="form-control" formControlName="input" placeholder="Input Case" id="floatingTextarea" style="height: 100px;"></textarea>
-                                  <label for="floatingTextarea">Input Case</label>
+                                <div class="col-md-12 mb-2">
+                                  <label class="form-label">Associate Code</label>
+                             
+                                    <select class="form-select" aria-label="Default select example" formControlName="input">
+                                      <option value="null" selected></option>
+                                      <option value="A34345">Project One</option>
+                                      <option value="B345">Project Two</option>
+                                      <option value="C678967">Project Three </option>
+                                      <option value="D46456">Project Four </option>
+                                      <option value="E5767">FIce </option>
+                                      <option value="F42364">six </option>
+                                      <option value="G0001">Seven</option>
+                                      
+                                    </select>
+                               
                                 </div>
                            
                               </div>
@@ -275,9 +311,21 @@
                       <ng-container *ngFor="let lessonForm of $any(architect).controls; let i = index">
                         <div class="lesson-form-row" [formGroup]="lessonForm">
                           <div class="row">
-                            <div class="form-floating mb-3">
-                              <textarea class="form-control" formControlName="input" placeholder="Input Case" id="floatingTextarea" style="height: 100px;"></textarea>
-                              <label for="floatingTextarea">Input Case</label>
+                            <div class="col-md-12 mb-2">
+                              <label class="form-label">Architect Code</label>
+                         
+                                <select class="form-select" aria-label="Default select example" formControlName="input">
+                                  <option value="null" selected></option>
+                                  <option value="A34345">Project One</option>
+                                  <option value="B345">Project Two</option>
+                                  <option value="C678967">Project Three </option>
+                                  <option value="D46456">Project Four </option>
+                                  <option value="E5767">FIce </option>
+                                  <option value="F42364">six </option>
+                                  <option value="G0001">Seven</option>
+                                  
+                                </select>
+                           
                             </div>
                           
                           </div>

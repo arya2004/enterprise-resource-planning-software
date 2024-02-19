@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { NewComponent } from './new/new.component';
 import { IndexComponent } from './index/index.component';
 import { EditComponent } from './edit/edit.component';
+import { ProjectFeesRoutingModule } from './project-fees-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +16,11 @@ import { EditComponent } from './edit/edit.component';
     EditComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProjectFeesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class ProjectFeesModule { }
