@@ -8,6 +8,7 @@ import { ProformaNewComponent } from './proforma-new/proforma-new.component';
 import { ProformaEditComponent } from './proforma-edit/proforma-edit.component';
 import { RouterModule } from '@angular/router';
 import { InvoiceRoutingModule } from './invoice-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +24,9 @@ import { InvoiceRoutingModule } from './invoice-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    InvoiceRoutingModule
+    InvoiceRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class InvoiceModule { }

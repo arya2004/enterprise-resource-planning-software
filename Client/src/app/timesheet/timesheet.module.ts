@@ -5,6 +5,7 @@ import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterModule } from '@angular/router';
 import { TimesheetRoutingModule } from './timesheet-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,9 @@ import { TimesheetRoutingModule } from './timesheet-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    TimesheetRoutingModule
+    TimesheetRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TimesheetModule { }
