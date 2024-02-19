@@ -24,7 +24,7 @@
               <form class="row g-3" novalidate [formGroup]="companyForm" (ngSubmit)="onSubmit()">
                 <div class="col-md-12">
                   <label for="inputName5" class="form-label">Company Name</label>
-                  <input type="text" class="form-control" id="inputName5" formControlName="name">
+                  <input type="text" class="form-control" id="inputName5" formControlName="name" ngModel={{kek}} name="name">
                 </div>
 
                 <div class="col-md-8">

@@ -9,6 +9,8 @@ import { ICompany } from 'src/app/shared/Models/Master/ICompany';
 })
 export class NewComponent {
 
+  kek : string = "werwegf"
+
   companyForm=  this.fb.group({
     companyCode: [null],
     name: ['', Validators.required],
@@ -36,6 +38,7 @@ export class NewComponent {
      
       console.log(this. companyForm.value); // You can do whatever you want with the form data, e.g., send it to a server
     } else {
+      console.log(this. companyForm.value);
       // Form is invalid, handle validation errors or show appropriate messages
     }
   }

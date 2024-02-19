@@ -9,12 +9,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent implements OnInit {
-  constructor(private fb:FormBuilder, private teacherService: ProjectsService, private router: Router) {}
+  constructor(private fb:FormBuilder, private teacherService: ProjectsService, private router: Router) {
+    console.log(this.selectedValue)
+  }
+
+  selectedValue: string = "D46456";
+  projects = [
+    { value: 'A34345', name: 'Project One' },
+    { value: 'B345', name: 'Project Two' },
+    { value: 'C678967', name: 'Project Three' },
+    { value: 'D46456', name: 'Project Four' },
+    
+    { value: 'F42364', name: 'six' },
+    { value: 'G0001', name: 'Seven' }
+  ];
 
   ngOnInit(): void {
     this.addEmployees();
     this.addArchitect();
     this.addAssociate();
+
+    this.form.get('projectCode')?.patchValue(this.selectedValue); 
   }
 
   range = new FormGroup({
@@ -34,7 +49,7 @@ export class NewComponent implements OnInit {
 
     
     client: [null],
-    projectCode: [null],
+    projectCode: [this.selectedValue],
     name: [null],
     clientWoNumber: [null],
     start: [null],

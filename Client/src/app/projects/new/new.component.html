@@ -57,19 +57,15 @@
   
                 <!-- General Form Elements -->
                <!-- Multi Columns Form -->
-              <form class="row g-3">
+              <form class="row g-3" [formGroup]="form">
                 <div class="col-md-12">
                   <label class="form-label">Company Code</label>
              
-                    <select class="form-select" aria-label="Default select example" formControlName="project">
-                      <option value="null" selected></option>
-                      <option value="A34345">Project One</option>
-                      <option value="B345">Project Two</option>
-                      <option value="C678967">Project Three </option>
-                      <option value="D46456">Project Four </option>
-                      <option value="E5767">FIce </option>
-                      <option value="F42364">six </option>
-                      <option value="G0001">Seven</option>
+                    <select class="form-select" aria-label="Default select example" formControlName="projectCode" name="projectCode">
+                    
+                      <option *ngFor="let project of projects" [value]="project.value" [selected]="selectedValue === project.value">
+                        {{ project.name }}
+                      </option>
                     </select>
                
                 </div>
@@ -196,7 +192,7 @@
                               <label class="form-label">Employee Code</label>
                          
                                 <select class="form-select" aria-label="Default select example" formControlName="input">
-                                  <option value="null" selected></option>
+                                  <option value="2343">wsdf</option>
                                   <option value="A34345">Project One</option>
                                   <option value="B345">Project Two</option>
                                   <option value="C678967">Project Three </option>

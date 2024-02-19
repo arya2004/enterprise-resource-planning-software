@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class ProformaNewComponent {
 
+
+  val : string = "A34345"
 }
