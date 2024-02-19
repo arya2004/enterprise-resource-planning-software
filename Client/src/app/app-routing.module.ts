@@ -19,6 +19,9 @@ const routes: Routes = [
   {path: 'travel', loadChildren: () => import('./travel/travel.module').then(m => m.TravelModule)},
   {path: 'timesheet', loadChildren: () => import('./timesheet/timesheet.module').then(m => m.TimesheetModule)},
   {path: 'invoice', loadChildren: () => import('./invoice/invoice.module').then(m => m.InvoiceModule)},
+  {path: 'project-fees', loadChildren: () => import('./project-fees/project-fees.module').then(m => m.ProjectFeesModule)},
+  {path: 'associate-fees', loadChildren: () => import('./associate-fee/associate-fee.module').then(m => m.AssociateFeeModule)},
+  {path: 'work-order', loadChildren: () => import('./work-order/work-order.module').then(m => m.WorkOrderModule)},
   {path: 'prot',canActivate:[AuthGuard], loadChildren: () => import('./master/master.module').then(m => m.MasterModule)},
   {path: 'cat',canActivate:[ HasRoleGuard], data: {role: 'CAT'}, loadChildren: () => import('./master/master.module').then(m => m.MasterModule)},
   { path: '**', component: NotFoundComponent }
