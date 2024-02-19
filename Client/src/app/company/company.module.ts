@@ -5,6 +5,7 @@ import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
 import { CompanyRoutingModule } from './company-routing.module';
 import { RouterModule } from '@angular/router';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     CompanyRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CompanyModule { }

@@ -5,6 +5,7 @@ import { IndexComponent } from './index/index.component';
 import { EditComponent } from './edit/edit.component';
 import { AssociateRoutingModule } from './associate-routing.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     AssociateRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AssociateModule { }

@@ -6,6 +6,7 @@ import { EditComponent } from './edit/edit.component';
 import { RouterModule } from '@angular/router';
 import { CompanyRoutingModule } from '../company/company-routing.module';
 import { ClientRoutingModule } from './client-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,9 @@ import { ClientRoutingModule } from './client-routing.module';
   imports: [
     CommonModule,
    ClientRoutingModule,
-   RouterModule
+   RouterModule,
+   FormsModule,
+   ReactiveFormsModule
   ]
 })
 export class ClientModule { }

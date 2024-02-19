@@ -32,6 +32,24 @@ export class NewComponent implements OnInit {
   })
   form = this.fb.group({
 
+    
+    client: [null],
+    projectCode: [null],
+    name: [null],
+    clientWoNumber: [null],
+    start: [null],
+    end: [null],
+    services: [null],
+    projectLocation: [null],
+    totalFees: [null],
+    feesReceived: [null],
+    feesBalance: [null],
+    expenses: [null],
+    profitAmount: [null],
+    isCompleted: [null],
+
+
+
     employees: this.fb.array([]),
     architect: this.fb.array([]),
     associate: this.fb.array([])

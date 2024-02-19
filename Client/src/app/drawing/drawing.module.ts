@@ -5,6 +5,7 @@ import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { DrawingRoutingModule } from './drawing-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,9 @@ import { DrawingRoutingModule } from './drawing-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    DrawingRoutingModule
+    DrawingRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DrawingModule { }

@@ -6,6 +6,7 @@ import { IndexComponent } from './index/index.component';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -13,7 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     EditComponent,
     NewComponent,
-    IndexComponent
+    IndexComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

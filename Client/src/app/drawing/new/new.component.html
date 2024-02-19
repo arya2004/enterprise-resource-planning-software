@@ -20,27 +20,79 @@
               <h5 class="card-title"></h5>
   
               <!-- Multi Columns Form -->
-              <form class="row g-3">
+              <form class="row g-3" [formGroup]="drawingForm" (ngSubmit)="onSubmit()">
                 <div class="col-md-3">
-                  <label for="inputName5" class="form-label">Company Code</label>
-                  <input type="text" class="form-control" id="inputName5">
+                  <label class="form-label">Company Code</label>
+             
+                    <select class="form-select" aria-label="Default select example" formControlName="company">
+                      <option value="null" selected></option>
+                      <option value="A34345">Project One</option>
+                      <option value="B345">Project Two</option>
+                 
+                    </select>
+               
                 </div>
                 <div class="col-md-4">
-                    <label for="inputName5" class="form-label">Employee Code</label>
-                    <input type="text" class="form-control" id="inputName5">
+                  <label class="form-label">Employee Code</label>
+             
+                    <select class="form-select" aria-label="Default select example" formControlName="employee">
+                      <option value="null" selected></option>
+                      <option value="A34345">Project One</option>
+                      <option value="B345">Project Two</option>
+                      <option value="C678967">Project Three </option>
+                      <option value="D46456">Project Four </option>
+                      <option value="E5767">FIce </option>
+                      <option value="F42364">six </option>
+                      <option value="G0001">Seven</option>
+                    </select>
+               
+                </div>
+
+                <div class="col-md-5">
+                    <label class="form-label">Project Code</label>
+               
+                      <select class="form-select" aria-label="Default select example" formControlName="project">
+                        <option value="null" selected></option>
+                        <option value="A34345">Project One</option>
+                        <option value="B345">Project Two</option>
+                        <option value="C678967">Project Three </option>
+                        <option value="D46456">Project Four </option>
+                        <option value="E5767">FIce </option>
+                        <option value="F42364">six </option>
+                        <option value="G0001">Seven</option>
+                      </select>
+                 
                   </div>
-                  <div class="col-md-5">
-                    <label for="inputName5" class="form-label">Project Code</label>
-                    <input type="text" class="form-control" id="inputName5">
-                  </div>
-           
+
                   <div class="col-md-6">
-                    <label for="inputName5" class="form-label">Client Code</label>
-                    <input type="text" class="form-control" id="inputName5">
+                    <label class="form-label">Client Code</label>
+               
+                      <select class="form-select" aria-label="Default select example" formControlName="client">
+                        <option value="null" selected></option>
+                        <option value="A34345">Project One</option>
+                        <option value="B345">Project Two</option>
+                        <option value="C678967">Project Three </option>
+                        <option value="D46456">Project Four </option>
+                        <option value="E5767">FIce </option>
+                        <option value="F42364">six </option>
+                        <option value="G0001">Seven</option>
+                      </select>
+                 
                   </div>
                   <div class="col-md-6">
-                    <label for="inputName5" class="form-label">Architect Code</label>
-                    <input type="text" class="form-control" id="inputName5">
+                    <label class="form-label">Architect Code</label>
+               
+                      <select class="form-select" aria-label="Default select example" formControlName="architect">
+                        <option value="null" selected></option>
+                        <option value="A34345">Project One</option>
+                        <option value="B345">Project Two</option>
+                        <option value="C678967">Project Three </option>
+                        <option value="D46456">Project Four </option>
+                        <option value="E5767">FIce </option>
+                        <option value="F42364">six </option>
+                        <option value="G0001">Seven</option>
+                      </select>
+                 
                   </div>
 
                   <div class="col-md-12">

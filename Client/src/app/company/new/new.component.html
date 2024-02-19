@@ -21,67 +21,67 @@
               <h5 class="card-title"></h5>
 
               <!-- Multi Columns Form -->
-              <form class="row g-3">
+              <form class="row g-3" novalidate [formGroup]="companyForm" (ngSubmit)="onSubmit()">
                 <div class="col-md-12">
                   <label for="inputName5" class="form-label">Company Name</label>
-                  <input type="text" class="form-control" id="inputName5">
+                  <input type="text" class="form-control" id="inputName5" formControlName="name">
                 </div>
 
                 <div class="col-md-8">
                   <label for="inputName5" class="form-label">Director Name</label>
-                  <input type="text" class="form-control" id="inputName5">
+                  <input type="text" class="form-control" id="inputName5" formControlName="directorName">
                 </div>
                 <div class="col-md-4">
                   <label for="inputZip" class="form-label">Director Employee Code</label>
-                  <input type="tel" class="form-control" id="inputZip">
+                  <input type="tel" class="form-control" id="inputZip" formControlName="directorEmployeeCode">
                 </div>  
                 <div class="col-md-4">
                   <label for="inputEmail5" class="form-label">Director Mobile</label>
-                  <input type="tel" class="form-control" id="inputEmail5">
+                  <input type="tel" class="form-control" id="inputEmail5" formControlName="directorMobile">
                 </div>
                 <div class="col-md-4">
                   <label for="inputEmail5" class="form-label">Director Email</label>
-                  <input type="email" class="form-control" id="inputEmail5">
+                  <input type="email" class="form-control" id="inputEmail5" formControlName="directorEmail">
                 </div>
                 <div class="col-md-4">
                   <label for="inputEmail5" class="form-label">Landline</label>
-                  <input type="tel" class="form-control" id="inputEmail5">
+                  <input type="tel" class="form-control" id="inputEmail5" formControlName="landLine">
                 </div>
                 <div class="col-12">
                   <label for="inputAddress5" class="form-label">Address Line 1</label>
-                  <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
+                  <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" formControlName="addressLine1">
                 </div>
                 <div class="col-12">
                   <label for="inputAddress2" class="form-label">Address Line 2</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" formControlName="addressLine2">
                 </div>
                 <div class="col-12">
                   <label for="inputAddress2" class="form-label">Address Line 3</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" formControlName="addressLine3">
                 </div>
                 <div class="col-md-3">
                   <label for="inputCity" class="form-label">City</label>
-                  <input type="text" class="form-control" id="inputCity">
+                  <input type="text" class="form-control" id="inputCity" formControlName="city">
                 </div>
                 <div class="col-md-4">
                   <label for="inputState" class="form-label">State</label>
-                  <input type="text" class="form-control" id="inputCity">
+                  <input type="text" class="form-control" id="inputCity" formControlName="state">
                 </div>
                 <div class="col-md-3">
                   <label for="inputState" class="form-label">Country</label>
-                  <input type="text" class="form-control" id="inputCity">
+                  <input type="text" class="form-control" id="inputCity" formControlName="country">
                 </div>
                 <div class="col-md-2">
                   <label for="inputZip" class="form-label">Postal Code</label>
-                  <input type="text" class="form-control" id="inputZip">
+                  <input type="text" class="form-control" id="inputZip" formControlName="postalCode">
                 </div>
                 <div class="col-md-6">
                   <label for="inputZip" class="form-label">Pan Number</label>
-                  <input type="text" class="form-control" id="inputZip">
+                  <input type="text" class="form-control" id="inputZip" formControlName="panNumber">
                 </div>
                 <div class="col-md-6">
                   <label for="inputZip" class="form-label">GST Number</label>
-                  <input type="text" class="form-control" id="inputZip">
+                  <input type="text" class="form-control" id="inputZip" formControlName="gstNumber">
                 </div>
                 <div class="col-12">
                   <div class="form-check">

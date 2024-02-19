@@ -5,6 +5,7 @@ import { IndexComponent } from './index/index.component';
 import { EditComponent } from './edit/edit.component';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     EmployeeRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class EmployeeModule { }
