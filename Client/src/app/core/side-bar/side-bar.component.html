@@ -1,248 +1,221 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="index.html">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <!-- End Dashboard Nav -->
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item"></li>
+    <!-- End Components Nav -->
+    <li class="nav-heading">Master</li>
 
-      <li class="nav-item">
-        <a class="nav-link " href="index.html">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/company">
+        <i class="bi bi-person"></i>
+        <span>Company</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Master</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a routerLink="/company" >
-              <i class="bi bi-circle"></i><span>Company</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/employee" >
-              <i class="bi bi-circle"></i><span>Employee</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/architect" >
-              <i class="bi bi-circle"></i><span>Architect</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/client">
-              <i class="bi bi-circle"></i><span>Client</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/associate" >
-              <i class="bi bi-circle"></i><span>Associate</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/project" >
-              <i class="bi bi-circle"></i><span>Project</span>
-            </a>
-          </li>
-          
-         
-         
-         
-        </ul>
-      </li><!-- End Components Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/employee">
+        <i class="bi bi-person"></i>
+        <span>Employee</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Employee</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a routerLink="/attendance">
-              <i class="bi bi-circle"></i><span>Attendance</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/timesheet">
-              <i class="bi bi-circle"></i><span>My TimeSheet</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/drawing">
-              <i class="bi bi-circle"></i><span>My Drawings</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/travel">
-              <i class="bi bi-circle"></i><span>My Expenses</span>
-            </a>
-          </li>
-         
-         
-        </ul>
-      </li><!-- End Forms Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/client">
+        <i class="bi bi-person"></i>
+        <span>Client</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-navv" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Projects</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-navv" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a routerLink="/attendance">
-              <i class="bi bi-circle"></i><span>P1</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/timesheet">
-              <i class="bi bi-circle"></i><span>P2</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/drawing">
-              <i class="bi bi-circle"></i><span>P3</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/travel">
-              <i class="bi bi-circle"></i><span>P4</span>
-            </a>
-          </li>
-         
-         
-        </ul>
-      </li><!-- End Forms Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/associate">
+        <i class="bi bi-person"></i>
+        <span>Associate</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/project">
+        <i class="bi bi-person"></i>
+        <span>Project</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Associate</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a routerLink="/drawing">
-              <i class="bi bi-circle"></i><span>My Drawings</span>
-            </a>
-          </li>
-       
-        </ul>
-      </li><!-- End Tables Nav -->
+    <li class="nav-heading">Employee</li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>Admin</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a routerLink="/work-order">
-              <i class="bi bi-circle"></i><span>Associate Work Order</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/project-fees">
-              <i class="bi bi-circle"></i><span>Project Fees</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/invoice/proforma">
-              <i class="bi bi-circle"></i><span>Proforma Invoice</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/invoice/gst">
-              <i class="bi bi-circle"></i><span>GST Invoice</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/associate-fees">
-              <i class="bi bi-circle"></i><span>Associate Fees</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Charts Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/attendance">
+        <i class="bi bi-person"></i>
+        <span>Attendance</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/timesheet">
+        <i class="bi bi-person"></i>
+        <span>My Timesheet</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-      <li class="nav-heading">Quick Link</li>
-    
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/drawing">
+        <i class="bi bi-person"></i>
+        <span>Drawings</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="/attendance">
-          <i class="bi bi-person"></i>
-          <span>Employee_Attendance</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/travel">
+        <i class="bi bi-person"></i>
+        <span>Travel</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed"  routerLink="/timesheet">
-          <i class="bi bi-person"></i>
-          <span>Employee_TimeSheet</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#forms-navv"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="bi bi-journal-text"></i><span>Projects</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="forms-navv"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a routerLink="/attendance">
+            <i class="bi bi-circle"></i><span>P1</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/timesheet">
+            <i class="bi bi-circle"></i><span>P2</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/drawing">
+            <i class="bi bi-circle"></i><span>P3</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/travel">
+            <i class="bi bi-circle"></i><span>P4</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- End Forms Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed"  routerLink="/drawing">
-          <i class="bi bi-person"></i>
-          <span>Employee_Drawings</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+    <li class="nav-heading">Associate</li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed"  routerLink="/travel">
-          <i class="bi bi-person"></i>
-          <span>Employee_Expenses</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/drawing">
+        <i class="bi bi-person"></i>
+        <span>My Drawing</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed"  routerLink="/drawing">
-          <i class="bi bi-person"></i>
-          <span>Associate_Drawings</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-      
-      <li class="nav-heading">Dev</li>
+    <li class="nav-heading">Admin</li>
 
-      
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/work-order">
+        <i class="bi bi-person"></i>
+        <span>Associate Work Order</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/project-fees">
+        <i class="bi bi-person"></i>
+        <span>Project Fees </span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/invoice/proforma">
+        <i class="bi bi-person"></i>
+        <span>Proforma Invoice</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/invoice/gst">
+        <i class="bi bi-person"></i>
+        <span>GST INvoice </span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
- 
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/associate-fees">
+        <i class="bi bi-person"></i>
+        <span>Associate Fees </span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-  
-      <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="/account/profile">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+    <li class="nav-heading">Dev</li>
 
-   
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/account/profile">
+        <i class="bi bi-person"></i>
+        <span>Profile</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed"routerLink="/account/register">
-          <i class="bi bi-card-list"></i>
-          <span>Register</span>
-        </a>
-      </li><!-- End Register Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/account/register">
+        <i class="bi bi-card-list"></i>
+        <span>Register</span>
+      </a>
+    </li>
+    <!-- End Register Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="/account/login">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/account/login">
+        <i class="bi bi-box-arrow-in-right"></i>
+        <span>Login</span>
+      </a>
+    </li>
+    <!-- End Login Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
-          <i class="bi bi-dash-circle"></i>
-          <span>Error 404</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-error-404.html">
+        <i class="bi bi-dash-circle"></i>
+        <span>Error 404</span>
+      </a>
+    </li>
+    <!-- End Error 404 Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
-        </a>
-      </li><!-- End Blank Page Nav -->
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-blank.html">
+        <i class="bi bi-file-earmark"></i>
+        <span>Blank</span>
+      </a>
+    </li>
+    <!-- End Blank Page Nav -->
+  </ul>
+</aside>
+<!-- End Sidebar-->

@@ -1,88 +1,196 @@
-
 <main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Client</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Client</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
 
-    <div class="pagetitle">
-      <h1>Client</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Client</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+  <section class="section" >
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card" style="overflow-x: auto;">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a routerLink="/client/new">
+                <button type="button" class="btn btn-primary">
+                  New Client
+                </button>
+              </a>
+            </h5>
 
-    <section class="section">
-      <div class="row">
-  
-        <div class="col-lg-12">
-         
-            
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><a routerLink="/client/new"> <button type="button" class="btn btn-primary">New Client</button> </a></h5>
-
-              <!-- Table with stripped rows -->
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td><a routerLink="/client/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td><a routerLink="/client/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td><a routerLink="/client/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td><a routerLink="/client/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td><a routerLink="/client/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
+            <!-- Table with stripped rows -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Address Line 1</th>
+                  <th scope="col">Address Line 2</th>
+                  <th scope="col">Address Line 3</th>
+                  <th scope="col">City</th>
+                  <th scope="col">State</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Postal Code</th>
+                  <th scope="col">Contact Person 1</th>
+                  <th scope="col">Designation 1</th>
+                  <th scope="col">Mobile Number 1</th>
+                  <th scope="col">Email 1</th>
+                  <th scope="col">Contact Person 2</th>
+                  <th scope="col">Designation 2</th>
+                  <th scope="col">Mobile Number 2</th>
+                  <th scope="col">Email 2</th>
+                  <th scope="col">Pan Number</th>
+                  <th scope="col">GST Number</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Address Line 1</td>
+                  <td>Address Line 2</td>
+                  <td>Address Line 3</td>
+                  <td>City</td>
+                  <td>State</td>
+                  <td>Country</td>
+                  <td>123456</td>
+                  <td>Contact Person 1</td>
+                  <td>Designation 1</td>
+                  <td>9876543210</td>
+                  <td>email1@example.com</td>
+                  <td>Contact Person 2</td>
+                  <td>Designation 2</td>
+                  <td>9876543210</td>
+                  <td>email2@example.com</td>
+                  <td>ABCDEF1234G</td>
+                  <td>GST123456789</td>
+                  <td>
+                    <a routerLink="/client/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Address Line 1</td>
+                  <td>Address Line 2</td>
+                  <td>Address Line 3</td>
+                  <td>City</td>
+                  <td>State</td>
+                  <td>Country</td>
+                  <td>123456</td>
+                  <td>Contact Person 1</td>
+                  <td>Designation 1</td>
+                  <td>9876543210</td>
+                  <td>email1@example.com</td>
+                  <td>Contact Person 2</td>
+                  <td>Designation 2</td>
+                  <td>9876543210</td>
+                  <td>email2@example.com</td>
+                  <td>ABCDEF1234G</td>
+                  <td>GST123456789</td>
+                  <td>
+                    <a routerLink="/client/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Address Line 1</td>
+                  <td>Address Line 2</td>
+                  <td>Address Line 3</td>
+                  <td>City</td>
+                  <td>State</td>
+                  <td>Country</td>
+                  <td>123456</td>
+                  <td>Contact Person 1</td>
+                  <td>Designation 1</td>
+                  <td>9876543210</td>
+                  <td>email1@example.com</td>
+                  <td>Contact Person 2</td>
+                  <td>Designation 2</td>
+                  <td>9876543210</td>
+                  <td>email2@example.com</td>
+                  <td>ABCDEF1234G</td>
+                  <td>GST123456789</td>
+                  <td>
+                    <a routerLink="/client/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Address Line 1</td>
+                  <td>Address Line 2</td>
+                  <td>Address Line 3</td>
+                  <td>City</td>
+                  <td>State</td>
+                  <td>Country</td>
+                  <td>123456</td>
+                  <td>Contact Person 1</td>
+                  <td>Designation 1</td>
+                  <td>9876543210</td>
+                  <td>email1@example.com</td>
+                  <td>Contact Person 2</td>
+                  <td>Designation 2</td>
+                  <td>9876543210</td>
+                  <td>email2@example.com</td>
+                  <td>ABCDEF1234G</td>
+                  <td>GST123456789</td>
+                  <td>
+                    <a routerLink="/client/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Address Line 1</td>
+                  <td>Address Line 2</td>
+                  <td>Address Line 3</td>
+                  <td>City</td>
+                  <td>State</td>
+                  <td>Country</td>
+                  <td>123456</td>
+                  <td>Contact Person 1</td>
+                  <td>Designation 1</td>
+                  <td>9876543210</td>
+                  <td>email1@example.com</td>
+                  <td>Contact Person 2</td>
+                  <td>Designation 2</td>
+                  <td>9876543210</td>
+                  <td>email2@example.com</td>
+                  <td>ABCDEF1234G</td>
+                  <td>GST123456789</td>
+                  <td>
+                    <a routerLink="/client/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
           </div>
-
-          
-
-        
-
-     
-
         </div>
       </div>
-    </section>
-
-  </main><!-- End #main -->
+    </div>
+  </section>
+</main>
+<!-- End #main -->

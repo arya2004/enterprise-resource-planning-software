@@ -1,5 +1,6 @@
 ﻿using ApteConsultancy.Data;
 using ApteConsultancy.Dto;
+using ApteConsultancy.Dto.DropdownDto;
 using ApteConsultancy.Dto.MasterDto;
 using ApteConsultancy.Models.Master;
 using AutoMapper;
@@ -48,6 +49,34 @@ namespace ApteConsultancy.Controllers
             _responseDto.IsSuccess = true;
             return _responseDto;
         }
+
+        [HttpGet("GetAllForDropdown")]
+        public async Task<ActionResult<ResponseDto>> GetAllForDropdown()
+        {
+            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+         
+
+            var companies = await _appDbContext.Companies.Select(u => new CompanyDropdownDto
+            {
+                CompanyId = u.CompanyId,
+                   CompanyCode  = u.CompanyCode,
+                    Name = u.Name
+                }).ToListAsync();
+
+
+            _responseDto.Result = companies;
+            _responseDto.IsSuccess = true;
+            return _responseDto;
+        }
+
+
 
         [HttpGet("GetOne")]
 

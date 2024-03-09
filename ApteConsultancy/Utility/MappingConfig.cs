@@ -1,4 +1,5 @@
 ﻿using ApteConsultancy.Dto.AdminDto;
+using ApteConsultancy.Dto.DropdownDto;
 using ApteConsultancy.Dto.EmployeeDto;
 using ApteConsultancy.Dto.MasterDto;
 using ApteConsultancy.Models;
@@ -16,6 +17,7 @@ namespace ApteConsultancy.Utility
                 config.CreateMap<ProjectDto, Project>().ReverseMap();
                 config.CreateMap<CreateProjectFeesDto, ProjectDto>().ReverseMap();
                 config.CreateMap<CompanyDto, Company>().ReverseMap();
+                config.CreateMap<CompanyDropdownDto, Company>().ReverseMap();
                 config.CreateMap<ClientDto, Client>().ReverseMap();
                 config.CreateMap<ArchitectDto, Architect>().ReverseMap();
                 config.CreateMap<CreateGSTInvoiceDto, GSTInvoice>().ReverseMap();

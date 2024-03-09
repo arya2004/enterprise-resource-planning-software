@@ -1,92 +1,82 @@
-
 <main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Company</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Company</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
 
-    <div class="pagetitle">
-      <h1>Company</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Company</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a routerLink="/company/new">
+                <button type="button" class="btn btn-primary">
+                  New Company
+                </button>
+              </a>
+            </h5>
 
-    <section class="section">
-      <div class="row">
-  
-        <div class="col-lg-12">
-         
-            
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><a routerLink="/company/new"> <button type="button" class="btn btn-primary">New Company</button> </a></h5>
-
-              <!-- Table with stripped rows -->
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td><a routerLink="/company/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td><a routerLink="/company/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td><a routerLink="/company/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td><a routerLink="/company/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr *ngFor="let c of company">
-                    <th scope="row">5</th>
-                    <td> {{c.name}} </td>
-                    <td> {{c.addressLine1}} </td>
-                    <td> {{c.directorEmail}} </td>
-                    <td><a routerLink="/company/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
+            <!-- Table with stripped rows -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Company Code</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Director Name</th>
+                  <th scope="col">Director Employee Code</th>
+                  <th scope="col">Director Mobile</th>
+                  <th scope="col">Land Line</th>
+                  <th scope="col">Director Email</th>
+                  <th scope="col">Address Line 1</th>
+                  <th scope="col">Address Line 2</th>
+                  <th scope="col">Address Line 3</th>
+                  <th scope="col">City</th>
+                  <th scope="col">State</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Postal Code</th>
+                  <th scope="col">Pan Number</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+               
+                <tr *ngFor="let c of company">
+                  <th scope="row">{{ c.companyCode }}</th>
+                  <td>{{ c.name }}</td>
+                  <td>{{ c.directorName }}</td>
+                  <td>{{ c.directorEmployeeCode }}</td>
+                  <td>{{ c.directorMobile }}</td>
+                  <td>{{ c.landLine }}</td>
+                  <td>{{ c.directorEmail }}</td>
+                  <td>{{ c.addressLine1 }}</td>
+                  <td>{{ c.addressLine2 }}</td>
+                  <td>{{ c.addressLine3 }}</td>
+                  <td>{{ c.city }}</td>
+                  <td>{{ c.state }}</td>
+                  <td>{{ c.country }}</td>
+                  <td>{{ c.postalCode }}</td>
+                  <td>{{ c.panNumber }}</td>
+                  <td>
+                      <a [routerLink]="'/company/' + c.companyCode">
+                          <button type="button" class="btn btn-secondary">Edit</button>
+                      </a>
+                  </td>
+              </tr>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
           </div>
-
-          
-
-        
-
-     
-
         </div>
       </div>
-    </section>
-
-
-    
-  
-
-  </main><!-- End #main -->
+    </div>
+  </section>
+</main>
+<!-- End #main -->

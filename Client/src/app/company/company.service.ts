@@ -11,7 +11,7 @@ export class CompanyService {
 
   ApiUri  = environment.apiUrl + "Company/";
  
-  postAssignment(company: any)
+  postCompany(company: any)
   {
     return this.http.post<any>(this.ApiUri , company);
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICompany } from 'src/app/shared/Models/Master/ICompany';
+import { CompanyService } from '../company.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new',
@@ -8,6 +10,7 @@ import { ICompany } from 'src/app/shared/Models/Master/ICompany';
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent {
+
 
   kek : string = "werwegf"
 
@@ -30,13 +33,24 @@ export class NewComponent {
     gstNumber: [null]
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private companyService: CompanyService, private router: Router) {}
 
 
   onSubmit() {
     if (this.companyForm.valid) {
+
+      console.log(this. companyForm.value);
+      this.companyService.postCompany(this.companyForm.value).subscribe({
+        next: (msg: any) => {
+          console.log(msg);
+          
+          this.router.navigateByUrl('/company')
+      },
+        error: (err) => console.error(err)
+      }
+      );
      
-      console.log(this. companyForm.value); // You can do whatever you want with the form data, e.g., send it to a server
+ // You can do whatever you want with the form data, e.g., send it to a server
     } else {
       console.log(this. companyForm.value);
       // Form is invalid, handle validation errors or show appropriate messages
