@@ -1,88 +1,262 @@
-
 <main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Employee</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Employee</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
 
-    <div class="pagetitle">
-      <h1>Employee</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Employee</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card" style="overflow-x: auto">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a routerLink="/employee/new">
+                <button type="button" class="btn btn-primary">
+                  New Employee
+                </button>
+              </a>
+            </h5>
 
-    <section class="section">
-      <div class="row">
-  
-        <div class="col-lg-12">
-         
-            
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><a routerLink="/employee/new"> <button type="button" class="btn btn-primary">New Employee</button> </a></h5>
-
-              <!-- Table with stripped rows -->
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td><a routerLink="/employee/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td><a routerLink="/employee/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td><a routerLink="/employee/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td><a routerLink="/employee/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td><a routerLink="/employee/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
+            <!-- Table with stripped rows -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">employeeCode</th>
+                  <th scope="col">employeeName</th>
+                  <th scope="col">addressLine1</th>
+                  <th scope="col">addressLine2</th>
+                  <th scope="col">addressLine3</th>
+                  <th scope="col">city</th>
+                  <th scope="col">state</th>
+                  <th scope="col">country</th>
+                  <th scope="col">postalCode</th>
+                  <th scope="col">contactPerson1</th>
+                  <th scope="col">relation1</th>
+                  <th scope="col">mobileNumber1</th>
+                  <th scope="col">contactPerson2</th>
+                  <th scope="col">relation2</th>
+                  <th scope="col">mobileNumber2</th>
+                  <th scope="col">expBeforeJoiningY</th>
+                  <th scope="col">expBeforeJoiningM</th>
+                  <th scope="col">pan</th>
+                  <th scope="col">uid</th>
+                  <th scope="col">birthDate</th>
+                  <th scope="col">anniversary</th>
+                  <th scope="col">bankName</th>
+                  <th scope="col">branchName</th>
+                  <th scope="col">branchAddress</th>
+                  <th scope="col">accountNumber</th>
+                  <th scope="col">isfCode</th>
+                  <th scope="col">accountType</th>
+                  <th scope="col">monthlySalary</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>EMP123</td>
+                  <td>John Doe</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>Jane Doe</td>
+                  <td>Spouse</td>
+                  <td>1234567890</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>ABCDE1234F</td>
+                  <td>123456789012</td>
+                  <td>1990-01-01</td>
+                  <td>2020-05-25</td>
+                  <td>ABC Bank</td>
+                  <td>Main Branch</td>
+                  <td>456 Branch St</td>
+                  <td>9876543210</td>
+                  <td>ABCDEF12345</td>
+                  <td>Savings</td>
+                  <td>5000</td>
+                  <td>
+                    <a routerLink="/employee/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>EMP123</td>
+                  <td>John Doe</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>Jane Doe</td>
+                  <td>Spouse</td>
+                  <td>1234567890</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>ABCDE1234F</td>
+                  <td>123456789012</td>
+                  <td>1990-01-01</td>
+                  <td>2020-05-25</td>
+                  <td>ABC Bank</td>
+                  <td>Main Branch</td>
+                  <td>456 Branch St</td>
+                  <td>9876543210</td>
+                  <td>ABCDEF12345</td>
+                  <td>Savings</td>
+                  <td>5000</td>
+                  <td>
+                    <a routerLink="/employee/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>EMP123</td>
+                  <td>John Doe</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>Jane Doe</td>
+                  <td>Spouse</td>
+                  <td>1234567890</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>ABCDE1234F</td>
+                  <td>123456789012</td>
+                  <td>1990-01-01</td>
+                  <td>2020-05-25</td>
+                  <td>ABC Bank</td>
+                  <td>Main Branch</td>
+                  <td>456 Branch St</td>
+                  <td>9876543210</td>
+                  <td>ABCDEF12345</td>
+                  <td>Savings</td>
+                  <td>5000</td>
+                  <td>
+                    <a routerLink="/employee/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>EMP123</td>
+                  <td>John Doe</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>Jane Doe</td>
+                  <td>Spouse</td>
+                  <td>1234567890</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>ABCDE1234F</td>
+                  <td>123456789012</td>
+                  <td>1990-01-01</td>
+                  <td>2020-05-25</td>
+                  <td>ABC Bank</td>
+                  <td>Main Branch</td>
+                  <td>456 Branch St</td>
+                  <td>9876543210</td>
+                  <td>ABCDEF12345</td>
+                  <td>Savings</td>
+                  <td>5000</td>
+                  <td>
+                    <a routerLink="/employee/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>EMP123</td>
+                  <td>John Doe</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>Jane Doe</td>
+                  <td>Spouse</td>
+                  <td>1234567890</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>ABCDE1234F</td>
+                  <td>123456789012</td>
+                  <td>1990-01-01</td>
+                  <td>2020-05-25</td>
+                  <td>ABC Bank</td>
+                  <td>Main Branch</td>
+                  <td>456 Branch St</td>
+                  <td>9876543210</td>
+                  <td>ABCDEF12345</td>
+                  <td>Savings</td>
+                  <td>5000</td>
+                  <td>
+                    <a routerLink="/employee/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
           </div>
-
-          
-
-        
-
-     
-
         </div>
       </div>
-    </section>
-
-  </main><!-- End #main -->
+    </div>
+  </section>
+</main>
+<!-- End #main -->

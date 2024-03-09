@@ -1,88 +1,202 @@
-
 <main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Architect</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Architect</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
 
-    <div class="pagetitle">
-      <h1>Architect</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Architect</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card" style="overflow-x: auto">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a routerLink="/architect/new">
+                <button type="button" class="btn btn-primary">
+                  New Architect
+                </button>
+              </a>
+            </h5>
 
-    <section class="section">
-      <div class="row">
-  
-        <div class="col-lg-12">
-         
-            
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><a routerLink="/architect/new"> <button type="button" class="btn btn-primary">New Architect</button> </a></h5>
-
-              <!-- Table with stripped rows -->
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td><a routerLink="/architect/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td><a routerLink="/architect/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td><a routerLink="/architect/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td><a routerLink="/architect/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td><a routerLink="/architect/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
+            <!-- Table with stripped rows -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">companyName</th>
+                  <th scope="col">addressLine1</th>
+                  <th scope="col">addressLine2</th>
+                  <th scope="col">addressLine3</th>
+                  <th scope="col">city</th>
+                  <th scope="col">state</th>
+                  <th scope="col">country</th>
+                  <th scope="col">postalCode</th>
+                  <th scope="col">contactPerson1</th>
+                  <th scope="col">designation1</th>
+                  <th scope="col">mobileNumber1</th>
+                  <th scope="col">email1</th>
+                  <th scope="col">contactPerson2</th>
+                  <th scope="col">designation2</th>
+                  <th scope="col">mobileNumber2</th>
+                  <th scope="col">email2</th>
+                  <th scope="col">panNumber</th>
+                  <th scope="col">gstNumber</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>ABC Company</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>John Doe</td>
+                  <td>Manager</td>
+                  <td>1234567890</td>
+                  <td>john@example.com</td>
+                  <td>Jane Smith</td>
+                  <td>Assistant Manager</td>
+                  <td>9876543210</td>
+                  <td>jane@example.com</td>
+                  <td>ABC1234567</td>
+                  <td>12ABCDE3456F1G7</td>
+                  <td>
+                    <a routerLink="/architect/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>ABC Company</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>John Doe</td>
+                  <td>Manager</td>
+                  <td>1234567890</td>
+                  <td>john@example.com</td>
+                  <td>Jane Smith</td>
+                  <td>Assistant Manager</td>
+                  <td>9876543210</td>
+                  <td>jane@example.com</td>
+                  <td>ABC1234567</td>
+                  <td>12ABCDE3456F1G7</td>
+                  <td>
+                    <a routerLink="/architect/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>ABC Company</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>John Doe</td>
+                  <td>Manager</td>
+                  <td>1234567890</td>
+                  <td>john@example.com</td>
+                  <td>Jane Smith</td>
+                  <td>Assistant Manager</td>
+                  <td>9876543210</td>
+                  <td>jane@example.com</td>
+                  <td>ABC1234567</td>
+                  <td>12ABCDE3456F1G7</td>
+                  <td>
+                    <a routerLink="/architect/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>ABC Company</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>John Doe</td>
+                  <td>Manager</td>
+                  <td>1234567890</td>
+                  <td>john@example.com</td>
+                  <td>Jane Smith</td>
+                  <td>Assistant Manager</td>
+                  <td>9876543210</td>
+                  <td>jane@example.com</td>
+                  <td>ABC1234567</td>
+                  <td>12ABCDE3456F1G7</td>
+                  <td>
+                    <a routerLink="/architect/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>ABC Company</td>
+                  <td>123 Main St</td>
+                  <td></td>
+                  <td></td>
+                  <td>New York</td>
+                  <td>New York</td>
+                  <td>USA</td>
+                  <td>10001</td>
+                  <td>John Doe</td>
+                  <td>Manager</td>
+                  <td>1234567890</td>
+                  <td>john@example.com</td>
+                  <td>Jane Smith</td>
+                  <td>Assistant Manager</td>
+                  <td>9876543210</td>
+                  <td>jane@example.com</td>
+                  <td>ABC1234567</td>
+                  <td>12ABCDE3456F1G7</td>
+                  <td>
+                    <a routerLink="/architect/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
           </div>
-
-          
-
-        
-
-     
-
         </div>
       </div>
-    </section>
-
-  </main><!-- End #main -->
+    </div>
+  </section>
+</main>
+<!-- End #main -->

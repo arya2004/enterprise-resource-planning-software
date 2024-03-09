@@ -1,88 +1,160 @@
-
 <main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Assiciate Fee</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Associate Fee</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
 
-    <div class="pagetitle">
-      <h1>Assiciate Fee</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Associate Fee</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card" style="overflow-x: auto">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a routerLink="/associate-fees/new">
+                <button type="button" class="btn btn-primary">
+                  New Associate Fee
+                </button>
+              </a>
+            </h5>
 
-    <section class="section">
-      <div class="row">
-  
-        <div class="col-lg-12">
-         
-            
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><a routerLink="/associate-fees/new"> <button type="button" class="btn btn-primary">New Associate Fee</button> </a></h5>
-
-              <!-- Table with stripped rows -->
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td><a routerLink="/travel/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td><a routerLink="/travel/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td><a routerLink="/travel/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td><a routerLink="/travel/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td><a routerLink="/travel/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
+            <!-- Table with stripped rows -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">associateFeeId</th>
+                  <th scope="col">associate</th>
+                  <th scope="col">projectFee</th>
+                  <th scope="col">transactionDate</th>
+                  <th scope="col">transactionType</th>
+                  <th scope="col">amount</th>
+                  <th scope="col">tdsAmount</th>
+                  <th scope="col">igst</th>
+                  <th scope="col">sgst</th>
+                  <th scope="col">cgst</th>
+                  <th scope="col">netAmount</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>1</td>
+                  <td>John Doe</td>
+                  <td>1000</td>
+                  <td>2024-03-09</td>
+                  <td>Sale</td>
+                  <td>800</td>
+                  <td>80</td>
+                  <td>20</td>
+                  <td>15</td>
+                  <td>10</td>
+                  <td>695</td>
+                  <td>
+                    <a routerLink="/travel/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>1</td>
+                  <td>John Doe</td>
+                  <td>1000</td>
+                  <td>2024-03-09</td>
+                  <td>Sale</td>
+                  <td>800</td>
+                  <td>80</td>
+                  <td>20</td>
+                  <td>15</td>
+                  <td>10</td>
+                  <td>695</td>
+                  <td>
+                    <a routerLink="/travel/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>1</td>
+                  <td>John Doe</td>
+                  <td>1000</td>
+                  <td>2024-03-09</td>
+                  <td>Sale</td>
+                  <td>800</td>
+                  <td>80</td>
+                  <td>20</td>
+                  <td>15</td>
+                  <td>10</td>
+                  <td>695</td>
+                  <td>
+                    <a routerLink="/travel/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>1</td>
+                  <td>John Doe</td>
+                  <td>1000</td>
+                  <td>2024-03-09</td>
+                  <td>Sale</td>
+                  <td>800</td>
+                  <td>80</td>
+                  <td>20</td>
+                  <td>15</td>
+                  <td>10</td>
+                  <td>695</td>
+                  <td>
+                    <a routerLink="/travel/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>1</td>
+                  <td>John Doe</td>
+                  <td>1000</td>
+                  <td>2024-03-09</td>
+                  <td>Sale</td>
+                  <td>800</td>
+                  <td>80</td>
+                  <td>20</td>
+                  <td>15</td>
+                  <td>10</td>
+                  <td>695</td>
+                  <td>
+                    <a routerLink="/travel/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
           </div>
-
-          
-
-        
-
-     
-
         </div>
       </div>
-    </section>
-
-  </main><!-- End #main -->
+    </div>
+  </section>
+</main>
+<!-- End #main -->

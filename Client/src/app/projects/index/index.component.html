@@ -1,88 +1,209 @@
-
 <main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Project</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Project</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
 
-    <div class="pagetitle">
-      <h1>Employee</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Employee</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card" style="overflow-x: auto">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a routerLink="/project/new">
+                <button type="button" class="btn btn-primary">
+                  New Project
+                </button>
+              </a>
+            </h5>
 
-    <section class="section">
-      <div class="row">
-  
-        <div class="col-lg-12">
-         
-            
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><a routerLink="/project/new"> <button type="button" class="btn btn-primary">New Employee</button> </a></h5>
+            <!-- Table with stripped rows -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">projectId</th>
+                  <th scope="col">company</th>
+                  <th scope="col">employee</th>
+                  <th scope="col">client</th>
+                  <th scope="col">architect</th>
+                  <th scope="col">associate</th>
+                  <th scope="col">projectCode</th>
+                  <th scope="col">name</th>
+                  <th scope="col">clientWoNumber</th>
+                  <th scope="col">start</th>
+                  <th scope="col">end</th>
+                  <th scope="col">services</th>
+                  <th scope="col">projectLocation</th>
+                  <th scope="col">totalFees</th>
+                  <th scope="col">feesReceived</th>
+                  <th scope="col">feesBalance</th>
+                  <th scope="col">expenses</th>
+                  <th scope="col">profitAmount</th>
+                  <th scope="col">isCompleted</th>
 
-              <!-- Table with stripped rows -->
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td><a routerLink="/project/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td><a routerLink="/project/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td><a routerLink="/project/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td><a routerLink="/project/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td><a routerLink="/project/4545"> <button type="button" class="btn btn-secondary">Edit</button> </a></td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>123456</td>
+                  <td>ABC Company</td>
+                  <td>John Doe</td>
+                  <td>Client Corp</td>
+                  <td>Architect Smith</td>
+                  <td>Associate Johnson</td>
+                  <td>7890</td>
+                  <td>Project XYZ</td>
+                  <td>WO123</td>
+                  <td>2024-01-01</td>
+                  <td>2024-12-31</td>
+                  <td>Consulting</td>
+                  <td>New York</td>
+                  <td>50000</td>
+                  <td>40000</td>
+                  <td>10000</td>
+                  <td>2000</td>
+                  <td>3000</td>
+                  <td>true</td>
+                  <td>
+                    <a routerLink="/project/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>123456</td>
+                  <td>ABC Company</td>
+                  <td>John Doe</td>
+                  <td>Client Corp</td>
+                  <td>Architect Smith</td>
+                  <td>Associate Johnson</td>
+                  <td>7890</td>
+                  <td>Project XYZ</td>
+                  <td>WO123</td>
+                  <td>2024-01-01</td>
+                  <td>2024-12-31</td>
+                  <td>Consulting</td>
+                  <td>New York</td>
+                  <td>50000</td>
+                  <td>40000</td>
+                  <td>10000</td>
+                  <td>2000</td>
+                  <td>3000</td>
+                  <td>true</td>
+                  <td>
+                    <a routerLink="/project/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>123456</td>
+                  <td>ABC Company</td>
+                  <td>John Doe</td>
+                  <td>Client Corp</td>
+                  <td>Architect Smith</td>
+                  <td>Associate Johnson</td>
+                  <td>7890</td>
+                  <td>Project XYZ</td>
+                  <td>WO123</td>
+                  <td>2024-01-01</td>
+                  <td>2024-12-31</td>
+                  <td>Consulting</td>
+                  <td>New York</td>
+                  <td>50000</td>
+                  <td>40000</td>
+                  <td>10000</td>
+                  <td>2000</td>
+                  <td>3000</td>
+                  <td>true</td>
+                  <td>
+                    <a routerLink="/project/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>123456</td>
+                  <td>ABC Company</td>
+                  <td>John Doe</td>
+                  <td>Client Corp</td>
+                  <td>Architect Smith</td>
+                  <td>Associate Johnson</td>
+                  <td>7890</td>
+                  <td>Project XYZ</td>
+                  <td>WO123</td>
+                  <td>2024-01-01</td>
+                  <td>2024-12-31</td>
+                  <td>Consulting</td>
+                  <td>New York</td>
+                  <td>50000</td>
+                  <td>40000</td>
+                  <td>10000</td>
+                  <td>2000</td>
+                  <td>3000</td>
+                  <td>true</td>
+                  <td>
+                    <a routerLink="/project/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>123456</td>
+                  <td>ABC Company</td>
+                  <td>John Doe</td>
+                  <td>Client Corp</td>
+                  <td>Architect Smith</td>
+                  <td>Associate Johnson</td>
+                  <td>7890</td>
+                  <td>Project XYZ</td>
+                  <td>WO123</td>
+                  <td>2024-01-01</td>
+                  <td>2024-12-31</td>
+                  <td>Consulting</td>
+                  <td>New York</td>
+                  <td>50000</td>
+                  <td>40000</td>
+                  <td>10000</td>
+                  <td>2000</td>
+                  <td>3000</td>
+                  <td>true</td>
+                  <td>
+                    <a routerLink="/project/4545">
+                      <button type="button" class="btn btn-secondary">
+                        Edit
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
           </div>
-
-          
-
-        
-
-     
-
         </div>
       </div>
-    </section>
-
-  </main><!-- End #main -->
+    </div>
+  </section>
+</main>
+<!-- End #main -->
