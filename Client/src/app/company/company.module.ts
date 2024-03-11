@@ -6,6 +6,7 @@ import { EditComponent } from './edit/edit.component';
 import { CompanyRoutingModule } from './company-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -20,7 +21,8 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
     CompanyRoutingModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ]
 })
 export class CompanyModule { }

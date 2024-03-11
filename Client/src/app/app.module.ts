@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
