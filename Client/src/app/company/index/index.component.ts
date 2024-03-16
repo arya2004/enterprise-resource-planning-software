@@ -33,4 +33,16 @@ export class IndexComponent implements OnInit {
     error: err => console.log(err)
   });
   }
+
+
+  deleteCompany(id: number)
+  {
+    this.companyService.DeleteCompany(id).subscribe({
+      next: res => {
+        console.log(res);
+        window.location.reload();
+      },
+      error: err => console.log(err)
+    });
+  }
 }

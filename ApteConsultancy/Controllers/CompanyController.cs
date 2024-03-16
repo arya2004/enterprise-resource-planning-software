@@ -80,7 +80,7 @@ namespace ApteConsultancy.Controllers
 
         [HttpGet("GetOne")]
 
-        public async Task<ActionResult<ResponseDto>> Get(string? name)
+        public async Task<ActionResult<ResponseDto>> Get(int id)
         {
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
@@ -97,7 +97,7 @@ namespace ApteConsultancy.Controllers
                 return _responseDto;
             }
 
-            Company? companies = await _appDbContext.Companies.FirstOrDefaultAsync(_ => _.Name == name);
+            Company? companies = await _appDbContext.Companies.FirstOrDefaultAsync(_ => _.CompanyId ==  id);
             _responseDto.Result = companies;
             _responseDto.IsSuccess = true;
             return Ok(_responseDto);
@@ -147,16 +147,30 @@ namespace ApteConsultancy.Controllers
         [HttpPut]
         public async Task<IActionResult> Edit(Company company)
         {
-           
+
+            try
+            {
                 _appDbContext.Companies.Update(company);
-            await _appDbContext.SaveChangesAsync();
-            return Ok("Edited");
+                await _appDbContext.SaveChangesAsync();
+                _responseDto.Message = "Edited Successfully";
+                _responseDto.IsSuccess = true;
+               
+            }
+            catch (Exception ex)
+            {
+
+                _responseDto.Message = ex.Message;
+                _responseDto.IsSuccess = false;
+            }
+
+            return Ok(_responseDto);
+
         }
 
       
         [HttpDelete]
         [ActionName("Delete")]
-        public async Task<ActionResult<ResponseDto>> Delete(string? name)
+        public async Task<ActionResult<ResponseDto>> Delete(int id)
         {
 
 
@@ -176,7 +190,7 @@ namespace ApteConsultancy.Controllers
             }
             try
             {
-                Company? company = _appDbContext.Companies.FirstOrDefault(_ => _.Name == name);
+                Company? company = _appDbContext.Companies.FirstOrDefault(_ => _.CompanyId == id);
                 if (company == null)
                 {
                     _responseDto.Message = "NOt Found";

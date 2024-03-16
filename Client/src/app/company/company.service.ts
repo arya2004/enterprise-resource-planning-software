@@ -10,6 +10,7 @@ export class CompanyService {
   constructor(private http: HttpClient, private router: Router) { }
 
   ApiUri  = environment.apiUrl + "Company/";
+  ApiUriUpdate  = environment.apiUrl + "Company";
  
   postCompany(company: any)
   {
@@ -25,19 +26,19 @@ export class CompanyService {
    
   }
   
-  GetOneCompany(name: string)
+  GetOneCompany(id: number)
   {
-    return this.http.get<any>(this.ApiUri + "GetOne" + `?name=${name}`);
+    return this.http.get<any>(this.ApiUri + "GetOne" + `?id=${id}`);
   }
 
   UpdateCompany(company: any)
   {
-    return this.http.put<any>(this.ApiUri, company);
+    return this.http.put<any>(this.ApiUriUpdate, company);
   }
 
-  DeleteCompany(name: string)
+  DeleteCompany(name: number)
   {
-    return this.http.delete<any>(this.ApiUri + `?name=${name}`);
+    return this.http.delete<any>(this.ApiUri + `?id=${name}`);
   }
 
 

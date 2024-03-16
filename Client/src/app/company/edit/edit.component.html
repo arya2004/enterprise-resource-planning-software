@@ -1,87 +1,113 @@
 
 <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Edit Company</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Company</li>
-          <li class="breadcrumb-item active">Edit</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
+  <div class="pagetitle">
+    <h1>Edit Company</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Company</li>
+        <li class="breadcrumb-item active">Edit</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
 
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"></h5>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"></h5>
 
-              <!-- Multi Columns Form -->
-              <form class="row g-3">
-                <div class="col-md-12">
-                  <label for="inputName5" class="form-label">Your Name</label>
-                  <input type="text" class="form-control" id="inputName5">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputEmail5" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="inputEmail5">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="inputPassword5">
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress5" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress2" class="form-label">Address 2</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputCity" class="form-label">City</label>
-                  <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="col-md-4">
-                  <label for="inputState" class="form-label">State</label>
-                  <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                <div class="col-md-2">
-                  <label for="inputZip" class="form-label">Zip</label>
-                  <input type="text" class="form-control" id="inputZip">
-                </div>
-                <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                      Check me out
-                    </label>
-                  </div>
-                </div>
-                <div class="text-center">
-                 <h1> <button type="submit" class="btn btn-secondary">Update</button></h1>
-                 <h1> <button type="reset" class="btn btn-danger">Delete</button></h1>
-                </div>
-              </form><!-- End Multi Columns Form -->
+            <!-- Multi Columns Form -->
+            <form class="row g-3" novalidate [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+              <div class="col-md-12">
+                <label for="inputName5" class="form-label">Company Name</label>
+                <input type="text" [(ngModel)]="company.name" class="form-control" id="inputName5" formControlName="name" ngModel={{kek}} name="name">
+              </div>
 
-            </div>
+              <div class="col-md-8">
+                <label for="inputName5" class="form-label">Director Name</label>
+                <input type="text" [(ngModel)]="company.directorName" class="form-control" id="inputName5" formControlName="directorName">
+              </div>
+              <div class="col-md-4">
+                <label for="inputZip" class="form-label">Director Employee Code</label>
+                <input type="tel" [(ngModel)]="company.directorEmployeeCode" class="form-control" id="inputZip" formControlName="directorEmployeeCode">
+              </div>  
+              <div class="col-md-4">
+                <label for="inputEmail5" class="form-label">Director Mobile</label>
+                <input type="tel" [(ngModel)]="company.directorMobile" class="form-control" id="inputEmail5" formControlName="directorMobile">
+              </div>
+              <div class="col-md-4">
+                <label for="inputEmail5" class="form-label">Director Email</label>
+                <input type="email" [(ngModel)]="company.directorEmail" class="form-control" id="inputEmail5" formControlName="directorEmail">
+              </div>
+              <div class="col-md-4">
+                <label for="inputEmail5" class="form-label">Landline</label>
+                <input type="tel" [(ngModel)]="company.landLine" class="form-control" id="inputEmail5" formControlName="landLine">
+              </div>
+              <div class="col-12">
+                <label for="inputAddress5" class="form-label">Address Line 1</label>
+                <input type="text" [(ngModel)]="company.addressLine1" class="form-control" id="inputAddres5s" placeholder="1234 Main St" formControlName="addressLine1">
+              </div>
+              <div class="col-12">
+                <label for="inputAddress2" class="form-label">Address Line 2</label>
+                <input type="text" [(ngModel)]="company.addressLine2" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" formControlName="addressLine2">
+              </div>
+              <div class="col-12">
+                <label for="inputAddress2" class="form-label">Address Line 3</label>
+                <input type="text" [(ngModel)]="company.addressLine3" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" formControlName="addressLine3">
+              </div>
+              <div class="col-md-3">
+                <label for="inputCity" class="form-label">City</label>
+                <input type="text" [(ngModel)]="company.city" class="form-control" id="inputCity" formControlName="city">
+              </div>
+              <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <input type="text" [(ngModel)]="company.state" class="form-control" id="inputCity" formControlName="state">
+              </div>
+              <div class="col-md-3">
+                <label for="inputState" class="form-label">Country</label>
+                <input type="text" [(ngModel)]="company.country" class="form-control" id="inputCity" formControlName="country">
+              </div>
+              <div class="col-md-2">
+                <label for="inputZip" class="form-label">Postal Code</label>
+                <input type="text" [(ngModel)]="company.postalCode" class="form-control" id="inputZip" formControlName="postalCode">
+              </div>
+              <div class="col-md-6">
+                <label for="inputZip" class="form-label">Pan Number</label>
+                <input type="text" [(ngModel)]="company.panNumber" class="form-control" id="inputZip" formControlName="panNumber">
+              </div>
+              <div class="col-md-6">
+                <label for="inputZip" class="form-label">GST Number</label>
+                <input type="text" [(ngModel)]="company.gstNumber" class="form-control" id="inputZip" formControlName="gstNumber">
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                  <label class="form-check-label" for="gridCheck">
+                    Check me out
+                  </label>
+                </div>
+              </div>
+              <div class="text-center">
+               <h1> <button type="submit" class="btn btn-primary">Update</button></h1>
+                  <h1> <button type="reset" class="btn btn-secondary">Reset</button></h1>
+              </div>
+            </form><!-- End Multi Columns Form -->
+
           </div>
-
         </div>
 
-     
+      </div>
+
+   
 
 
-      
-        </div>
-     
-    </section>
+    
+      </div>
+   
+  </section>
 
-  </main><!-- End #main -->
+</main><!-- End #main -->

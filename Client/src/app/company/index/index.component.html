@@ -27,7 +27,7 @@
             <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped">
               <thead>
                 <tr>
-              
+                  <th scope="col">#</th>
                   <th scope="col">Company Code</th>
                   <th scope="col">Name</th>
                   <th scope="col">Director Name</th>
@@ -44,12 +44,14 @@
                   <th scope="col">Postal Code</th>
                   <th scope="col">Pan Number</th>
                   <th scope="col"></th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
                
                 <tr *ngFor="let c of company">
-                  <td scope="row">{{ c.companyCode }}</td>
+                  <td scope="row">{{ c.companyId }}</td>
+                  <td>{{ c.companyCode }}</td>
                   <td>{{ c.name }}</td>
                   <td>{{ c.directorName }}</td>
                   <td>{{ c.directorEmployeeCode }}</td>
@@ -65,9 +67,34 @@
                   <td>{{ c.postalCode }}</td>
                   <td>{{ c.panNumber }}</td>
                   <td>
-                      <a [routerLink]="'/company/' + c.companyCode">
+                      <a routerLink="/company/{{c.companyId}}">
                           <button type="button" class="btn btn-secondary">Edit</button>
                       </a>
+                    </td>
+                    <td>
+                    
+                          <!-- Disabled Backdrop Modal -->
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
+                            Delete
+                          </button>
+                          <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Are you Sure?</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                This cant be reverted   </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary" (click)="deleteCompany(c.companyId)">Delete</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div><!-- End Disabled Backdrop Modal-->
+            
+                      
                   </td>
               </tr>
               </tbody>

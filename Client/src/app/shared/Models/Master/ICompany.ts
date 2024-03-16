@@ -1,4 +1,5 @@
 export interface ICompany {
+    companyId: number;
     companyCode?: string | null;
     name: string;
     directorName?: string | null;
