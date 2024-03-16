@@ -37,6 +37,7 @@ export class IndexComponent implements OnInit {
 
   deleteCompany(id: number)
   {
+    console.log(id);
     this.companyService.DeleteCompany(id).subscribe({
       next: res => {
         console.log(res);
