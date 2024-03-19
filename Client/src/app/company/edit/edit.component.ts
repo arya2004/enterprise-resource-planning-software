@@ -11,8 +11,7 @@ import { ICompany } from 'src/app/shared/Models/Master/ICompany';
 })
 export class EditComponent implements OnInit{
   
-  kek : string = "werwegf"
-  company !: any;
+ 
   companyId !: number;
 
   ngOnInit() {
@@ -21,9 +20,8 @@ export class EditComponent implements OnInit{
     console.log(this.companyId);
     this.companyService.GetOneCompany(this.companyId).subscribe({
       next: (res: any) => {
-        this.company = res.result;
-        console.log(this.company);
-        this.companyForm.patchValue(this.company);
+
+        this.companyForm.patchValue(res.result);
       },
       error: (err) => console.error(err)
     
@@ -31,7 +29,8 @@ export class EditComponent implements OnInit{
 
   }
 
-  companyForm=  this.fb.group({
+   companyForm=  this.fb.group({
+    companyId: [this.companyId],
     companyCode: [null],
     name: ['', Validators.required],
     directorName: [null],
@@ -54,10 +53,10 @@ export class EditComponent implements OnInit{
 
 
   onSubmit() {
-    
+    if (this.companyForm.valid) {
 
-      console.log(this.company);
-      this.companyService.UpdateCompany(this.company).subscribe({
+      console.log(this. companyForm.value);
+      this.companyService.UpdateCompany(this.companyForm.value).subscribe({
         next: (msg: any) => {
           console.log(msg);
           
@@ -67,6 +66,10 @@ export class EditComponent implements OnInit{
       }
       );
      
- 
+ // You can do whatever you want with the form data, e.g., send it to a server
+    } else {
+      console.log(this. companyForm.value);
+      // Form is invalid, handle validation errors or show appropriate messages
+    }
   }
 }
