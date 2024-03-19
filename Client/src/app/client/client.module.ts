@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { CompanyRoutingModule } from '../company/company-routing.module';
 import { ClientRoutingModule } from './client-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
    ClientRoutingModule,
    RouterModule,
    FormsModule,
-   ReactiveFormsModule
+   ReactiveFormsModule,
+   DataTablesModule
   ]
 })
 export class ClientModule { }

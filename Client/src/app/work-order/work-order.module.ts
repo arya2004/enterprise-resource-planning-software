@@ -6,6 +6,7 @@ import { EditComponent } from './edit/edit.component';
 import { WorkOrderRoutingModule } from './work-order-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    WorkOrderRoutingModule
+    WorkOrderRoutingModule,
+    DataTablesModule
   ]
 })
 export class WorkOrderModule { }

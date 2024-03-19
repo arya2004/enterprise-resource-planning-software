@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IndexComponent } from './index/index.component';
 import { AttendanceRoutingModule } from './attendance-routing.module';
 import { RouterModule } from '@angular/router';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     AttendanceRoutingModule,
-    RouterModule
+    RouterModule,
+    DataTablesModule
   ]
 })
 export class AttendanceModule { }

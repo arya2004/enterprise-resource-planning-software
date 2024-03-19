@@ -5,6 +5,7 @@ import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterModule } from '@angular/router';
 import { TravelRoutingModule } from './travel-routing.module';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -17,7 +18,8 @@ import { TravelRoutingModule } from './travel-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    TravelRoutingModule
+    TravelRoutingModule,
+    DataTablesModule
   ]
 })
 export class TravelModule { }

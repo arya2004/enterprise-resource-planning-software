@@ -9,6 +9,7 @@ import { ProformaEditComponent } from './proforma-edit/proforma-edit.component';
 import { RouterModule } from '@angular/router';
 import { InvoiceRoutingModule } from './invoice-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     InvoiceRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ]
 })
 export class InvoiceModule { }

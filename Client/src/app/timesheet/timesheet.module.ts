@@ -6,6 +6,7 @@ import { EditComponent } from './edit/edit.component';
 import { RouterModule } from '@angular/router';
 import { TimesheetRoutingModule } from './timesheet-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -20,7 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     TimesheetRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
+
   ]
 })
 export class TimesheetModule { }

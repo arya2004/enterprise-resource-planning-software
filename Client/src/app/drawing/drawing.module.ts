@@ -6,6 +6,7 @@ import { EditComponent } from './edit/edit.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { DrawingRoutingModule } from './drawing-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     DrawingRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ]
 })
 export class DrawingModule { }

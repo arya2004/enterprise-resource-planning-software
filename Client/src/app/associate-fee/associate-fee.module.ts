@@ -6,6 +6,7 @@ import { NewComponent } from './new/new.component';
 import { AssociateFeeRoutingModule } from './associate-fee-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -20,7 +21,8 @@ import { RouterModule } from '@angular/router';
     AssociateFeeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    DataTablesModule
   ]
 })
 export class AssociateFeeModule { }

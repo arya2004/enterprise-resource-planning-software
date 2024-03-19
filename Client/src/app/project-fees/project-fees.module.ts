@@ -6,6 +6,7 @@ import { EditComponent } from './edit/edit.component';
 import { ProjectFeesRoutingModule } from './project-fees-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -20,7 +21,8 @@ import { RouterModule } from '@angular/router';
     ProjectFeesRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    DataTablesModule
   ]
 })
 export class ProjectFeesModule { }
