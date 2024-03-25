@@ -9,6 +9,7 @@ const routes: Routes = [
 
   {path: '', component: IndexComponent},
   {path: 'new', component: NewComponent},
+  
   {path: ':id', component: EditComponent},
 
 

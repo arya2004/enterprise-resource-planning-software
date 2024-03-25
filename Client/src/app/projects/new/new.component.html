@@ -25,18 +25,7 @@
                 <li class="nav-item" role="presentation">
                   <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-home" type="button" role="tab" aria-controls="home" aria-selected="true">Description</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#bordered-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Employee</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#bordered-contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Associate</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="architect-tab" data-bs-toggle="tab" data-bs-target="#architect" type="button" role="tab" aria-controls="architect" aria-selected="false">Architect</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="preview-tab" data-bs-toggle="tab" data-bs-target="#preview" type="button" role="tab" aria-controls="contact" aria-selected="false">Preview</button>
-                </li>
+                
               </ul>
               <div class="tab-content pt-2" id="borderedTabContent">
                 <div class="tab-pane fade show active" id="bordered-home" role="tabpanel" aria-labelledby="home-tab">
@@ -151,22 +140,15 @@
                     </div>
                    
                   </div>
-  
-                <div class="text-center">
-                  <h1> <button type="submit" class="btn btn-primary">Submit</button></h1>
-                  <h1> <button type="reset" class="btn btn-secondary">Reset</button></h1>
-                </div>
+                  <div class="text-center">
+                    <h1> <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></h1>
+                    <h1> <button type="reset" class="btn btn-secondary">Reset</button></h1>
+                  </div>
               </form><!-- End Multi Columns Form -->
   
             
   
-                  <div class="accordion accordion-flush px-xl-5" id="faqlist">
-  
-  
-  
-  
-  
-                  </div>
+          
   
                 </div>
   
@@ -177,200 +159,11 @@
                 
                 
                 </div>
-                <div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="profile-tab">
-                 
-                   
-                     
-                  <h5 class="card-title">Assign Employee</h5>
-
-                  <div class="add-employees-form" [formGroup]="form">
-                    <ng-container formArrayName="employees">
-                      <ng-container *ngFor="let lessonForm of $any(employees).controls; let i = index">
-                        <div class="lesson-form-row" [formGroup]="lessonForm">
-                          <div class="row">
-                            <div class="col-md-12 mb-2">
-                              <label class="form-label">Employee Code</label>
-                         
-                                <select class="form-select" aria-label="Default select example" formControlName="input">
-                                  <option value="2343">wsdf</option>
-                                  <option value="A34345">Project One</option>
-                                  <option value="B345">Project Two</option>
-                                  <option value="C678967">Project Three </option>
-                                  <option value="D46456">Project Four </option>
-                                  <option value="E5767">FIce </option>
-                                  <option value="F42364">six </option>
-                                  <option value="G0001">Seven</option>
-                                  
-                                </select>
-                           
-                            </div>
-                          
-                          </div>
-                      
-                        
-                            <div class="row mb-3">
-                      
-                              <div class="col-sm-10">
-                                <button  class="btn btn-danger" (click)="deleteEmployees(i)">Delete Test Case</button>
-                              </div>
-                            </div>
-                        </div>
-                      </ng-container>
-                    </ng-container>
-          
-                    <div class="row mb-3">
-                      
-                      <div class="col-sm-10">
-                        <button  class="btn btn-primary" (click)="addEmployees()">Add Test Case</button>
-                      </div>
-                    </div>
-          
-                  </div>
-          
-               
-
-  
-                
-                
-                
-                
-                
-                </div>
-                <div class="tab-pane fade" id="bordered-contact" role="tabpanel" aria-labelledby="contact-tab">
-                  
-               
-               
-               
-                      <h5 class="card-title">Associate</h5>
-  
-                      <div class="add-employees-form" [formGroup]="form">
-                        <ng-container formArrayName="associate">
-                          <ng-container *ngFor="let lessonForm of $any(associate).controls; let i = index">
-                            <div class="lesson-form-row" [formGroup]="lessonForm">
-                              <div class="row">
-                                <div class="col-md-12 mb-2">
-                                  <label class="form-label">Associate Code</label>
-                             
-                                    <select class="form-select" aria-label="Default select example" formControlName="input">
-                                      <option value="null" selected></option>
-                                      <option value="A34345">Project One</option>
-                                      <option value="B345">Project Two</option>
-                                      <option value="C678967">Project Three </option>
-                                      <option value="D46456">Project Four </option>
-                                      <option value="E5767">FIce </option>
-                                      <option value="F42364">six </option>
-                                      <option value="G0001">Seven</option>
-                                      
-                                    </select>
-                               
-                                </div>
-                           
-                              </div>
-                          
-                            
-                                <div class="row mb-3">
-                          
-                                  <div class="col-sm-10">
-                                    <button  class="btn btn-danger" (click)="deleteAssociate(i)">Delete associate</button>
-                                  </div>
-                                </div>
-                            </div>
-                          </ng-container>
-                        </ng-container>
-              
-                        <div class="row mb-3">
-                          
-                          <div class="col-sm-10">
-                            <button  class="btn btn-primary" (click)="addAssociate()">Add associate</button>
-                          </div>
-                        </div>
-              
-                      </div>
-              
-  
-                 
-                 
-               
-               
-               
-                </div>
-
-                <div class="tab-pane fade" id="architect" role="tabpanel" aria-labelledby="architect-tab">
-                  
-               
-               
-               
-                  <h5 class="card-title">Architect</h5>
-
-                  <div class="add-employees-form" [formGroup]="form">
-                    <ng-container formArrayName="architect">
-                      <ng-container *ngFor="let lessonForm of $any(architect).controls; let i = index">
-                        <div class="lesson-form-row" [formGroup]="lessonForm">
-                          <div class="row">
-                            <div class="col-md-12 mb-2">
-                              <label class="form-label">Architect Code</label>
-                         
-                                <select class="form-select" aria-label="Default select example" formControlName="input">
-                                  <option value="null" selected></option>
-                                  <option value="A34345">Project One</option>
-                                  <option value="B345">Project Two</option>
-                                  <option value="C678967">Project Three </option>
-                                  <option value="D46456">Project Four </option>
-                                  <option value="E5767">FIce </option>
-                                  <option value="F42364">six </option>
-                                  <option value="G0001">Seven</option>
-                                  
-                                </select>
-                           
-                            </div>
-                          
-                          </div>
-                      
-                        
-                            <div class="row mb-3">
-                      
-                              <div class="col-sm-10">
-                                <button  class="btn btn-danger" (click)="deleteArchitect(i)">Delete architect</button>
-                              </div>
-                            </div>
-                        </div>
-                      </ng-container>
-                    </ng-container>
-          
-                    <div class="row mb-3">
-                      
-                      <div class="col-sm-10">
-                        <button  class="btn btn-primary" (click)="addArchitect()">Add architect</button>
-                      </div>
-                    </div>
-          
-                  </div>
-          
-
-             
-             
            
-           
-           
-            </div>
 
-
-                
-                <div class="tab-pane fade" id="preview" role="tabpanel" aria-labelledby="preview">
-                  
-                  <div class="text-center">
-                    <h1> <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></h1>
-                    <h1> <button type="reset" class="btn btn-secondary">Reset</button></h1>
-                  </div>
                
-              
-  
-             
-             
-           
-           
-           
-            </div>
+
+               
               </div><!-- End Bordered Tabs -->
   
             </div>

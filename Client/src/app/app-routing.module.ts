@@ -5,6 +5,9 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { HasRoleGuard } from './core/guards/has-role.guard';
 import { IndexComponent } from './projects/index/index.component';
+import { EmployeeDashboardComponent } from './employee/dashboard/dashboard.component';
+import { AssociateDashboardComponent } from './associate/dashboard/dashboard.component';
+import { ArchitectDashboardComponent } from './architect/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', title:'Apte', component:IndexComponent},
@@ -25,9 +28,9 @@ const routes: Routes = [
   {path: 'work-order', loadChildren: () => import('./work-order/work-order.module').then(m => m.WorkOrderModule)},
   //for a project
   {path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule)},
-  {path: 'project/:projectId/employee', loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule)},
-  {path: 'project/:projectId/architect', loadChildren: () => import('./architect/architect.module').then(m => m.ArchitectModule)},
-  {path: 'project/:projectId/associate', loadChildren: () => import('./associate/associate.module').then(m => m.AssociateModule)},
+  {path: 'project/:projectId/employee', component: EmployeeDashboardComponent},
+  {path: 'project/:projectId/architect', component: ArchitectDashboardComponent},
+  {path: 'project/:projectId/associate',component: AssociateDashboardComponent},
   {path: 'project/:projectId/drawing', loadChildren: () => import('./drawing/drawing.module').then(m => m.DrawingModule)},
   {path: 'project/:projectId/travel', loadChildren: () => import('./travel/travel.module').then(m => m.TravelModule)},
   {path: 'project/:projectId/timesheet', loadChildren: () => import('./timesheet/timesheet.module').then(m => m.TimesheetModule)},

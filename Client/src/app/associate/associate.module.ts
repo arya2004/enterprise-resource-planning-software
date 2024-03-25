@@ -7,6 +7,7 @@ import { AssociateRoutingModule } from './associate-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { AssociateDashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -14,7 +15,8 @@ import { DataTablesModule } from 'angular-datatables';
   declarations: [
     NewComponent,
     IndexComponent,
-    EditComponent
+    EditComponent,
+    AssociateDashboardComponent
   ],
   imports: [
     CommonModule,

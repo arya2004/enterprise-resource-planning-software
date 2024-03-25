@@ -24,9 +24,6 @@ export class NewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.addEmployees();
-    this.addArchitect();
-    this.addAssociate();
 
     this.projectService.GetCompanyForDropdown().subscribe({
       next: (data) => {
@@ -71,61 +68,11 @@ export class NewComponent implements OnInit {
 
 
 
-    employees: this.fb.array([]),
-    architect: this.fb.array([]),
-    associate: this.fb.array([])
+
   });
 
 
-  get employees() {
-    return this.form.controls["employees"] as FormArray;
-  }
-
-  get architect() {
-    return this.form.controls["architect"] as FormArray;
-  }
-
-
-  get associate() {
-    return this.form.controls["associate"] as FormArray;
-  }
-
-
-  addEmployees() {
-    const lessonForm = this.fb.group({
-      input: ['', Validators.required],
-  
-    });
-    this.employees.push(lessonForm);
-  }
-
-  addArchitect() {
-    const architectForm = this.fb.group({
-      input: ['', Validators.required],
-     
-    });
-    this.architect.push(architectForm);
-  }
-
-  addAssociate() {
-    const associateForm = this.fb.group({
-      input: ['', Validators.required],
-  
-    });
-    this.associate.push(associateForm);
-  }
-
-  deleteEmployees(lessonIndex: number) {
-    this.employees.removeAt(lessonIndex);
-  }
-
-  deleteAssociate(lessonIndex: number) {
-    this.associate.removeAt(lessonIndex);
-  }
-
-  deleteArchitect(lessonIndex: number) {
-    this.architect.removeAt(lessonIndex);
-  }
+ 
 
   onSubmit()
   { 

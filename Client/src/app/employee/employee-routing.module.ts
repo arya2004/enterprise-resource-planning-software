@@ -5,11 +5,11 @@ import { IndexComponent } from './index/index.component';
 import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
 
-
 const routes: Routes = [
 
   {path: '', component: IndexComponent},
   {path: 'new', component: NewComponent},
+
   {path: ':id', component: EditComponent},
 
 

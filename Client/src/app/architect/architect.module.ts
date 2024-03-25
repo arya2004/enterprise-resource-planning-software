@@ -7,6 +7,7 @@ import { ArchitectRoutingModule } from './architect-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { ArchitectDashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -14,7 +15,8 @@ import { DataTablesModule } from 'angular-datatables';
   declarations: [
     IndexComponent,
     NewComponent,
-    EditComponent
+    EditComponent,
+    ArchitectDashboardComponent
   ],
   imports: [
     CommonModule,

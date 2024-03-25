@@ -1,0 +1,182 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Associate Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Associate</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="card" style="overflow-x: auto">
+            <div class="card-body">
+              <h5 class="card-title">
+               
+              </h5>
+  
+              <!-- Table with stripped rows -->
+              <table datatable [dtOptions]="dtOptions"  class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">companyName</th>
+                  
+              
+                    <th scope="col">state</th>
+         
+                
+                    <th scope="col">mobileNumber1</th>
+                    <th scope="col">email1</th>
+                    
+                    
+                    <th scope="col">mobileNumber2</th>
+                    <th scope="col">email2</th>
+                   
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                   
+              
+            
+                
+                    <td>Jane Smith</td>
+                    <td>Assistant Manager</td>
+                    <td>9876543210</td>
+                    <td>janeexample.com</td>
+                    <td>ABC1234567</td>
+                    <td>12ABCDE3456F1G7</td>
+                    <td>
+                      <a routerLink="/associate/4545">
+                        <button type="button" class="btn btn-secondary">
+                          Edit
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                   
+                 
+               
+              
+                    <td>Jane Smith</td>
+                    <td>Assistant Manager</td>
+                    <td>9876543210</td>
+                    <td>janeexample.com</td>
+                    <td>ABC1234567</td>
+                    <td>12ABCDE3456F1G7</td>
+                    <td>
+                      <a routerLink="/associate/4545">
+                        <button type="button" class="btn btn-secondary">
+                          Edit
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                  
+              
+            
+                    <td>Jane Smith</td>
+                    <td>Assistant Manager</td>
+                    <td>9876543210</td>
+                    <td>janeexample.com</td>
+                    <td>ABC1234567</td>
+                    <td>12ABCDE3456F1G7</td>
+                    <td>
+                      <a routerLink="/associate/4545">
+                        <button type="button" class="btn btn-secondary">
+                          Edit
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                  
+               
+            
+                 
+                    <td>Jane Smith</td>
+                    <td>Assistant Manager</td>
+                    <td>9876543210</td>
+                    <td>janeexample.com</td>
+                    <td>ABC1234567</td>
+                    <td>12ABCDE3456F1G7</td>
+                    <td>
+                      <a routerLink="/associate/4545">
+                        <button type="button" class="btn btn-secondary">
+                          Edit
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+       
+                
+                
+                    <td>Jane Smith</td>
+                    <td>Assistant Manager</td>
+                    <td>9876543210</td>
+                    <td>janeexample.com</td>
+                    <td>ABC1234567</td>
+                    <td>12ABCDE3456F1G7</td>
+                    <td>
+                      <a routerLink="/associate/4545">
+                        <button type="button" class="btn btn-secondary">
+                          Edit
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+            <!-- Recent Activity -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Add <span>| Associate</span></h5>
+    
+                <div class="row mb-3">
+                  <form class="" [formGroup]="form">
+                    <div class="col-sm-12">
+                      <div class="form mb-3">
+                        <label class="form-label">Associate Code</label>
+             
+                    <select class="form-select" aria-label="Default select example" formControlName="projectCode" name="projectCode">
+                    
+                      <option *ngFor="let company of companies" [value]="company.companyId" [selected]="selectedValue === company.companyId">
+                        {{ company.name }} - {{company.companyCode}}
+                      </option>
+                    </select>
+                      </div>
+    
+                      <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+    
+              
+            </div>
+            <!-- End News & Updates -->
+          </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  
