@@ -25,12 +25,19 @@ namespace ApteConsultancy.Service
             var claimsList = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.GivenName, user.EmployeeName),
+
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
 
-
-
             };
+            if(user.EmployeeName != null)
+            {
+                claimsList.Add(new Claim(ClaimTypes.GivenName, user.EmployeeName));
+            }
+            else
+            {
+                claimsList.Add(new Claim(ClaimTypes.GivenName, user.CompanyName));
+            }
+           
             claimsList.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             var credential = new SigningCredentials(_symmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature);

@@ -1,7 +1,9 @@
 ﻿using ApteConsultancy.Dto.AdminDto;
+using ApteConsultancy.Dto.AuthDto;
 using ApteConsultancy.Dto.DropdownDto;
 using ApteConsultancy.Dto.EmployeeDto;
 using ApteConsultancy.Dto.MasterDto;
+using ApteConsultancy.Model.Master;
 using ApteConsultancy.Models;
 using ApteConsultancy.Models.Master;
 using AutoMapper;
@@ -14,6 +16,10 @@ namespace ApteConsultancy.Utility
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
+
+                config.CreateMap<ApplicationUser, EmployeeRegisterRequestDto>().ReverseMap();
+                config.CreateMap<ApplicationUser, AssociateRegisterRequestDto>().ReverseMap();
+
                 config.CreateMap<ProjectDto, Project>().ReverseMap();
                 config.CreateMap<CreateProjectFeesDto, ProjectDto>().ReverseMap();
                 config.CreateMap<CompanyDto, Company>().ReverseMap();

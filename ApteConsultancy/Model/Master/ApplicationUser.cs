@@ -16,15 +16,15 @@ namespace ApteConsultancy.Model.Master
         public string? Relation1 { get; set; }  
         public string? Relation2 { get; set; }
      
-        public int ExpBeforeJoiningY { get; set; }
-        public int ExpBeforeJoiningM { get; set; }
+        public int? ExpBeforeJoiningY { get; set; }
+        public int? ExpBeforeJoiningM { get; set; }
         public string? Pan { get; set; }
         public string? UID { get; set; }
-        public DateTime BirthDate { get; set; }
-        public DateTime Anniversary { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public DateTime? Anniversary { get; set; }
         public string? BankName { get; set; }
 
-        public int MonthlySalary { get; set; }
+        public int? MonthlySalary { get; set; }
 
         //Associate
         public string? CompanyName { get; set; }
@@ -42,22 +42,22 @@ namespace ApteConsultancy.Model.Master
         public string? Bank { get; set; }
       
 
-        public bool IsFreeLancer { get; set; }
+        public bool? IsFreeLancer { get; set; }
 
         //Common
         public string? BranchName { get; set; }
         public string? City { get; set; }
         public string? State { get; set; }
         public string? Country { get; set; }
-        public int PostalCode { get; set; }
+        public int? PostalCode { get; set; }
         public string? ContactPerson1 { get; set; }
-        public int MobileNumber1 { get; set; }
+        public int? MobileNumber1 { get; set; }
         public string? ContactPerson2 { get; set; }
-        public int MobileNumber2 { get; set; }
+        public int? MobileNumber2 { get; set; }
         public string? BranchAddress { get; set; }
-        public int AccountNumber { get; set; }
+        public int? AccountNumber { get; set; }
         public string? ISFCode { get; set; }
-        public int AccountType { get; set; }
+        public int? AccountType { get; set; }
         //F Keys
 
         public ICollection<Project>? Projects { get; set; } 

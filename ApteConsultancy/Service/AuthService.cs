@@ -1,8 +1,10 @@
 ﻿using ApteConsultancy.Data;
 using ApteConsultancy.Dto;
-
+using ApteConsultancy.Dto.AuthDto;
 using ApteConsultancy.Model.Master;
+using ApteConsultancy.Models.Master;
 using ApteConsultancy.Service.IService;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 
 namespace ApteConsultancy.Service
@@ -14,14 +16,16 @@ namespace ApteConsultancy.Service
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IJwtTokenGenerator _jwtService;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private IMapper _mapper;
 
-        public AuthService(AppDbContext applicationDbContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IJwtTokenGenerator jwtService, SignInManager<ApplicationUser> signInManager)
+        public AuthService(IMapper mapper,    AppDbContext applicationDbContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IJwtTokenGenerator jwtService, SignInManager<ApplicationUser> signInManager)
         {
             _applicationDbContext = applicationDbContext;
             _userManager = userManager;
             _roleManager = roleManager;
             _jwtService = jwtService;
             this.signInManager = signInManager;
+            _mapper = mapper;
         }
 
         public async Task<bool> AssignRole(string email, string roleName)
@@ -38,10 +42,12 @@ namespace ApteConsultancy.Service
             }
             return false;
         }
+   
 
         public async Task<UserDto> Login(LoginRequestDto requestDto)
         {
             var user = await _userManager.FindByEmailAsync(requestDto.Email);
+
             if (user == null)
             {
                 return new UserDto()
@@ -103,6 +109,67 @@ namespace ApteConsultancy.Service
             return "Error";
         }
 
+        public async Task<string> RegisterAssociate(AssociateRegisterRequestDto requestDto)
+        {
+            ApplicationUser user = _mapper.Map<ApplicationUser>(requestDto);
+            user.UserName = requestDto.Name;
+            user.IsAssociate = true;
+            try
+            {
+                var result = await _userManager.CreateAsync(user, requestDto.Password);
+                if (result.Succeeded)
+                {
 
+                    
+                        if (!_roleManager.RoleExistsAsync("ASSOCIATE").GetAwaiter().GetResult())
+                        {
+                            _roleManager.CreateAsync(new IdentityRole("ASSOCIATE")).GetAwaiter().GetResult();
+                        }
+                        await _userManager.AddToRoleAsync(user, "ASSOCIATE");
+                        return "Registered and Assigned Role Successfully ASSOCIATE";
+                }
+                else
+                {
+                    return result.Errors.FirstOrDefault().Description;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return "Error";
+        }
+
+        public async Task<string> RegisterEmployee(EmployeeRegisterRequestDto requestDto)
+        {
+            ApplicationUser user = _mapper.Map<ApplicationUser>(requestDto);
+            user.UserName = requestDto.Name;
+            user.IsAssociate = false;
+            try
+            {
+                var result = await _userManager.CreateAsync(user, requestDto.Password);
+                if (result.Succeeded)
+                {
+
+                    if (!_roleManager.RoleExistsAsync("EMPLOYEE").GetAwaiter().GetResult())
+                    {
+                        _roleManager.CreateAsync(new IdentityRole("EMPLOYEE")).GetAwaiter().GetResult();
+                    }
+                    await _userManager.AddToRoleAsync(user, "EMPLOYEE");
+                    return "Registered and Assigned Role Successfully EMPLOYEE";
+                }
+                else
+                {
+                    return result.Errors.FirstOrDefault().Description;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return "Error";
+        }
     }
 }

@@ -1,0 +1,41 @@
+﻿namespace ApteConsultancy.Dto.AuthDto
+{
+    public class EmployeeRegisterRequestDto
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string? Role { get; set; }
+        public string? EmployeeCode { get; set; }
+        public string? EmployeeName { get; set; }
+        public string? AddressLine1 { get; set; }
+        public string? AddressLine2 { get; set; }
+        public string? AddressLine3 { get; set; }
+
+        public string? Relation1 { get; set; }
+        public string? Relation2 { get; set; }
+
+        public int ExpBeforeJoiningY { get; set; }
+        public int ExpBeforeJoiningM { get; set; }
+        public string? Pan { get; set; }
+        public string? UID { get; set; }
+        public DateTime BirthDate { get; set; }
+        public DateTime Anniversary { get; set; }
+        public string? BankName { get; set; }
+
+        public int MonthlySalary { get; set; }
+        public string? BranchName { get; set; }
+        public string? City { get; set; }
+        public string? State { get; set; }
+        public string? Country { get; set; }
+        public int PostalCode { get; set; }
+        public string? ContactPerson1 { get; set; }
+        public int MobileNumber1 { get; set; }
+        public string? ContactPerson2 { get; set; }
+        public int MobileNumber2 { get; set; }
+        public string? BranchAddress { get; set; }
+        public int AccountNumber { get; set; }
+        public string? ISFCode { get; set; }
+        public int AccountType { get; set; }
+    }
+}
