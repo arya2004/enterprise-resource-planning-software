@@ -1,375 +1,120 @@
 <main id="main" class="main">
-
-    <div class="pagetitle">
-        <h1>New Project</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Project</li>
-                <li class="breadcrumb-item active">New</li>
-            </ol>
-        </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
-
-
-
-                <div class="card">
-                    <div class="card-body pt-3">
-
-                        <!-- Bordered Tabs -->
-                        <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                                    data-bs-target="#bordered-home" type="button" role="tab" aria-controls="home"
-                                    aria-selected="true">My Drawings</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#bordered-profile" type="button" role="tab" aria-controls="profile"
-                                    aria-selected="false">My Expenses</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                    data-bs-target="#bordered-contact" type="button" role="tab" aria-controls="contact"
-                                    aria-selected="false">My Timesheet</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="architect-tab" data-bs-toggle="tab"
-                                    data-bs-target="#architect" type="button" role="tab" aria-controls="architect"
-                                    aria-selected="false">Architect</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="preview-tab" data-bs-toggle="tab" data-bs-target="#preview"
-                                    type="button" role="tab" aria-controls="contact" aria-selected="false">Project
-                                    Detail</button>
-                            </li>
-                        </ul>
-                        <div class="tab-content pt-2" id="borderedTabContent">
-                            <div class="tab-pane fade show active" id="bordered-home" role="tabpanel"
-                                aria-labelledby="home-tab">
-
-
-
-                                <div class="row gy-4">
-
-                                    <div
-                                        class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-
-                                        <!-- <div class="content px-xl-5">
-                    <h3>Reverse LinkedList</h3>
-                    <p [innerHTML]="description"></p>
-                  </div> -->
-
-
-                                        <h5 class="card-title">New Project</h5>
-
-                                        <!-- General Form Elements -->
-                                        <!-- Multi Columns Form -->
-                                        <form class="row g-3">
-                                            <div class="col-md-12">
-                                                <label for="inputName5" class="form-label">Company Code</label>
-                                                <input type="text" class="form-control" id="inputName5">
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <label for="inputName5" class="form-label">CLient Code</label>
-                                                <input type="text" class="form-control" id="inputName5">
-                                            </div>
-
-
-                                            <div class="col-md-12">
-                                                <label for="inputName5" class="form-label">Project Name</label>
-                                                <input type="text" class="form-control" id="inputName5">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="inputName5" class="form-label">Client Wo Number</label>
-                                                <input type="text" class="form-control" id="inputName5">
-                                            </div>
-
-
-
-
-
-
-                                            <div class="col-md-6">
-                                                <label for="inputZip" class="form-label">Start Date</label>
-                                                <input type="date" class="form-control" id="inputZip">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="inputZip" class="form-label">End Date </label>
-                                                <input type="date" class="form-control" id="inputZip">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="inputZip" class="form-label">Services </label>
-                                                <input type="text" class="form-control" id="inputZip">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="inputZip" class="form-label">Project Location </label>
-                                                <input type="text" class="form-control" id="inputZip">
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <label for="inputZip" class="form-label">Total Fees </label>
-                                                <input type="number" class="form-control" id="inputZip">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="inputZip" class="form-label">Fees Received </label>
-                                                <input type="number" class="form-control" id="inputZip">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="inputZip" class="form-label">Fees Balance</label>
-                                                <input type="number" class="form-control" id="inputZip">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="inputZip" class="form-label">Expenses</label>
-                                                <input type="number" class="form-control" id="inputZip">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="inputZip" class="form-label">Profit Amount</label>
-                                                <input type="number" class="form-control" id="inputZip">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="inputZip" class="form-label">Profit Percent</label>
-                                                <input type="number" class="form-control" id="inputZip">
-                                            </div>
-
-                                            <legend class="col-form-label col-sm-2 pt-0"></legend>
-                                            <div class="col-md-6">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="gridRadios"
-                                                        id="gridRadios1" value="option1" checked>
-                                                    <label class="form-check-label" for="gridRadios1">
-                                                        Current
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="gridRadios"
-                                                        id="gridRadios2" value="option2">
-                                                    <label class="form-check-label" for="gridRadios2">
-                                                        Completed
-                                                    </label>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="text-center">
-                                                <h1> <button type="submit" class="btn btn-primary">Submit</button></h1>
-                                                <h1> <button type="reset" class="btn btn-secondary">Reset</button></h1>
-                                            </div>
-                                        </form><!-- End Multi Columns Form -->
-
-
-
-                                        <div class="accordion accordion-flush px-xl-5" id="faqlist">
-
-
-
-
-
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-
-
-
-
-                            </div>
-                            <div class="tab-pane fade" id="bordered-profile" role="tabpanel"
-                                aria-labelledby="profile-tab">
-
-
-
-                                <h5 class="card-title">Expenses</h5>
-
-
-
-
-
-                            </div>
-
-
-
-
-
-
-
-
-
-
-                            <div class="tab-pane fade" id="bordered-contact" role="tabpanel"
-                                aria-labelledby="contact-tab">
-
-
-
-
-                                <h5 class="card-title">TimeSheet</h5>
-
-
-
-
-
-
-
-
-
-                            </div>
-
-                            <div class="tab-pane fade" id="architect" role="tabpanel" aria-labelledby="architect-tab">
-
-
-
-                                <h5 class="card-title">Architect</h5>
-
-
-
-
-
-
-
-
-
-                            </div>
-
-
-
-                            <div class="tab-pane fade" id="preview" role="tabpanel" aria-labelledby="preview">
-
-                                <h5 class="card-title">Project Overview</h5>
-
-
-                                <h5 class="card-title">About</h5>
-                                <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores
-                                    cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure
-                                    rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at
-                                    unde.</p>
-
-                                <h5 class="card-title">Profile Details</h5>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label ">Employee Name</div>
-                                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Email</div>
-                                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Address Line 1</div>
-                                    <div class="col-lg-9 col-md-8">Web Designer</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Address Line 2</div>
-                                    <div class="col-lg-9 col-md-8">Web Designer</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Address Line 3</div>
-                                    <div class="col-lg-9 col-md-8">Web Designer</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">City</div>
-                                    <div class="col-lg-9 col-md-8">USA</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">State</div>
-                                    <div class="col-lg-9 col-md-8">USA</div>
-                                </div>
-
-
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Country</div>
-                                    <div class="col-lg-9 col-md-8">USA</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Postal Code</div>
-                                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">PAN</div>
-                                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Contact Person 1</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Relation 1</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Mobile Number 1</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Mobile Number 1</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Contact Person 2</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Relation 2</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Mobile Number 2</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Mobile Number 2</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Education Qualification 1</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Education Qualification 2</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Education Qualification 3</div>
-                                    <div class="col-lg-9 col-md-8">k.andersonexample.com</div>
-                                </div>
-
-
-
-
-
-
-
-
-                            </div>
-                        </div>
-                    </div><!-- End Bordered Tabs -->
-
+  <div class="pagetitle">
+    <h1>Project dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Project</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card" style="overflow-x: auto">
+          <div class="card-body">
+           
+            <h5 class="card-title">Admin</h5>
+            <a routerLink="/project/4554/associate">
+              <div class="d-grid gap-2 mt-3">
+                <button class="btn btn-light btn-lg" type="button">
+                  Associates
+                </button>
+              </div>
+            </a>
+
+            <a routerLink="/project/4554/employee">
+              <div class="d-grid gap-2 mt-3">
+                <button class="btn btn-secondary btn-lg" type="button">
+                  Employees
+                </button>
+              </div>
+            </a>
+
+            <a routerLink="/project/4554/drawing">
+              <div class="d-grid gap-2 mt-3">
+                <button class="btn btn-light btn-lg" type="button">
+                  Drawings
+                </button>
+              </div>
+            </a>
+
+            <a routerLink="/project/4554/invoice/proforma">
+                <div class="d-grid gap-2 mt-3">
+                  <button class="btn btn-secondary btn-lg" type="button">
+                    Proforma Invioce
+                  </button>
                 </div>
-            </div>
-
-
+              </a>
+              <a routerLink="/project/4545/invoice/gst">
+                <div class="d-grid gap-2 mt-3">
+                  <button class="btn btn-light btn-lg" type="button">
+                    GST Invoices
+                  </button>
+                </div>
+              </a>
+  
+              <a routerLink="/project/4554/travel">
+                  <div class="d-grid gap-2 mt-3">
+                    <button class="btn btn-secondary btn-lg" type="button">
+                       All Own Car, Local, and Outstation Expenses
+                    </button>
+                  </div>
+                </a>
+                <a routerLink="/project/4554/timesheet">
+                    <div class="d-grid gap-2 mt-3">
+                      <button class="btn btn-light btn-lg" type="button">
+                        All Employee Timesheet
+                      </button>
+                    </div>
+                  </a>
+      
+                  <a routerLink="/project/4554/project-fees">
+                      <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-secondary btn-lg" type="button">
+                          Project Fees
+                        </button>
+                      </div>
+                    </a>
+            <h5 class="card-title">Employee</h5>
+            <a routerLink="/project/4554/timesheet">
+              <div class="d-grid gap-2 mt-3">
+                <button class="btn btn-secondary btn-lg" type="button">
+                  My Timesheet
+                </button>
+              </div>
+            </a>
+            <a routerLink="/project/4554/travel">
+                <div class="d-grid gap-2 mt-3">
+                  <button class="btn btn-light btn-lg" type="button">
+                    My Own Car, Local, and Outstation Expenses
+                  </button>
+                </div>
+              </a>
+  
+              <a routerLink="/project/4554/drawing">
+                <div class="d-grid gap-2 mt-3">
+                  <button class="btn btn-secondary btn-lg" type="button">
+                    Drawings
+                  </button>
+                </div>
+              </a>
+              <h5 class="card-title">Associate</h5>
+  
+              <a routerLink="/project/4554/drawing">
+                <div class="d-grid gap-2 mt-3">
+                  <button class="btn btn-secondary btn-lg" type="button">
+                    Drawings
+                  </button>
+                </div>
+              </a>
+              
+          </div>
         </div>
-
-
-
-    </section>
-
-</main><!-- End #main -->
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->

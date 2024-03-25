@@ -29,7 +29,7 @@ namespace ApteConsultancy.Models.Master
         public string? Email2 { get; set; }
         public string? PanNumber { get; set; }
         public string? GstNUmber { get; set; }
-
+     
 
 
     }

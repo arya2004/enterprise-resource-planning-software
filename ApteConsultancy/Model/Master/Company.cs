@@ -22,6 +22,7 @@ namespace ApteConsultancy.Models.Master
         public string?   Country { get; set; }
         public int PostalCode { get; set; }
         public string?  PanNumber { get; set; }
+        public ICollection<Project>? Projects { get; set; }
     }
 }
 

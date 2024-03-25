@@ -1,4 +1,5 @@
 ﻿using ApteConsultancy.Model.Master;
+using Azure;
 using System.ComponentModel.DataAnnotations;
 
 namespace ApteConsultancy.Models.Master
@@ -12,7 +13,7 @@ namespace ApteConsultancy.Models.Master
         //public ApplicationUser? Employee { get; set; }
         public ICollection<ApplicationUser> ApplicationUsers { get; set; } = new List<ApplicationUser>();
         public Client? Client { get; set; }
-        public Architect? Architect { get; set; }
+        public ICollection<Architect>? Architects { get; set; } = new List<Architect>();
         //public ApplicationUser? Associate { get; set; }
 
         public int? ProjectCode { get; set; }
@@ -27,7 +28,10 @@ namespace ApteConsultancy.Models.Master
         public decimal? FeesBalance { get; set; }
         public decimal? Expenses { get; set; }
         public decimal? ProfitAmount { get; set; }
-        public bool? IsCompleted { get; set; } 
+        public bool? IsCompleted { get; set; }
+
+        
+
 
 
     }

@@ -11,9 +11,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
 
   {path: '', component: IndexComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  
   {path: 'new', component: NewComponent},
   {path: ':id', component: EditComponent},
+  {path: ':id/dashboard', component: DashboardComponent},
 
 
 

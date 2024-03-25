@@ -60,6 +60,6 @@ namespace ApteConsultancy.Model.Master
         public int AccountType { get; set; }
         //F Keys
 
-        public ICollection<Project> Projects { get; }  = new List<Project>();
+        public ICollection<Project>? Projects { get; set; } 
     }
 }

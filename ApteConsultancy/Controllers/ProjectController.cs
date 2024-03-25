@@ -82,7 +82,7 @@ namespace ApteConsultancy.Controllers
                    
                     Company = company,
                     Client = client,
-                    Architect = architect,
+                    Architects = {},
                     ProjectCode = projectDto.ProjectCode,
                     Name = projectDto.Name,
                     ClientWoNumber = projectDto.ClientWoNumber,

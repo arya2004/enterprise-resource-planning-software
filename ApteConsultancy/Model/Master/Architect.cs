@@ -25,6 +25,6 @@ namespace ApteConsultancy.Models.Master
         public string? Email2 { get; set; }
         public string? PanNumber { get; set; }
         public string? GstNUmber { get; set; }
-
+        public ICollection<Project>? Projects { get; set; } = new List<Project>();
     }
 }
