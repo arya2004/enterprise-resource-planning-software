@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { AssociateService } from '../associate.service';
+import { IAssociateIndex } from 'src/app/shared/Models/Master/IAssociateIndex';
 
 @Component({
   selector: 'app-index',
@@ -8,7 +10,9 @@ import { Subject } from 'rxjs';
 })
 export class IndexComponent implements OnInit{
 
-  constructor() { }
+  
+  company: IAssociateIndex[]  = [] ;
+  constructor(public companyService: AssociateService) { }
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   ngOnInit(): void {
@@ -16,20 +20,36 @@ export class IndexComponent implements OnInit{
       pagingType: 'full_numbers'
     };
     this.getAllCompany();
+    
+    
    
   }
 
   getAllCompany()
   {
-   // this.companyService.GetCompany().subscribe({
-    //  next: res => {
-    //  this.company = res.result;
+    this.companyService.GetAssociate().subscribe({
+      next: res => {
+      this.company = res.result;
       this.dtTrigger.next(null);
-    //},
+      console.log(this.company);
+      
+    },
   
-    //error: err => console.log(err)
-  //}
-  //);
+    error: err => console.log(err)
+  });
+  }
+
+
+  deleteCompany(id: number)
+  {
+    console.log(id);
+    this.companyService.DeleteAssociate(id).subscribe({
+      next: res => {
+        console.log(res);
+        window.location.reload();
+      },
+      error: err => console.log(err)
+    });
   }
 
 }

@@ -47,6 +47,7 @@ namespace ApteConsultancy.Service
         public async Task<UserDto> Login(LoginRequestDto requestDto)
         {
             var user = await _userManager.FindByEmailAsync(requestDto.Email);
+            
 
             if (user == null)
             {

@@ -24,230 +24,103 @@
             </h5>
 
             <!-- Table with stripped rows -->
-            <table datatable [dtOptions]="dtOptions"  class="table table-striped">
+            <table
+              datatable
+              [dtOptions]="dtOptions"
+              [dtTrigger]="dtTrigger"
+
+              class="table table-striped"
+            >
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">employeeCode</th>
-                  <th scope="col">employeeName</th>
-                  <th scope="col">addressLine1</th>
-                  <th scope="col">addressLine2</th>
-                  <th scope="col">addressLine3</th>
-                  <th scope="col">city</th>
-                  <th scope="col">state</th>
-                  <th scope="col">country</th>
-                  <th scope="col">postalCode</th>
-                  <th scope="col">contactPerson1</th>
-                  <th scope="col">relation1</th>
-                  <th scope="col">mobileNumber1</th>
-                  <th scope="col">contactPerson2</th>
-                  <th scope="col">relation2</th>
-                  <th scope="col">mobileNumber2</th>
-                  <th scope="col">expBeforeJoiningY</th>
-                  <th scope="col">expBeforeJoiningM</th>
-                  <th scope="col">pan</th>
-                  <th scope="col">uid</th>
-                  <th scope="col">birthDate</th>
-                  <th scope="col">anniversary</th>
-                  <th scope="col">bankName</th>
-                  <th scope="col">branchName</th>
-                  <th scope="col">branchAddress</th>
-                  <th scope="col">accountNumber</th>
-                  <th scope="col">isfCode</th>
-                  <th scope="col">accountType</th>
-                  <th scope="col">monthlySalary</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Employee Code</th>
+                  <th>Employee Name</th>
+                  <th>Address Line 1</th>
+                  <th>Address Line 2</th>
+                  <th>Address Line 3</th>
+                  <th>Relation 1</th>
+                  <th>Relation 2</th>
+                  <th>Exp Before Joining (Years)</th>
+                  <th>Exp Before Joining (Months)</th>
+                  <th>PAN</th>
+                  <th>UID</th>
+                  <th>Birth Date</th>
+                  <th>Anniversary</th>
+                  <th>Bank Name</th>
+                  <th>Monthly Salary</th>
+                  <th>Branch Name</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Country</th>
+                  <th>Postal Code</th>
+                  <th>Contact Person 1</th>
+                  <th>Mobile Number 1</th>
+                  <th>Contact Person 2</th>
+                  <th>Mobile Number 2</th>
+                  <th>Branch Address</th>
+                  <th>Account Number</th>
+                  <th>ISF Code</th>
+                  <th>Account Type</th>
+                  
                   <th scope="col"></th>
+                  <th scope="col"></th>
+             
+       
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>EMP123</td>
-                  <td>John Doe</td>
-                  <td>123 Main St</td>
-                  <td></td>
-                  <td></td>
-                  <td>New York</td>
-                  <td>New York</td>
-                  <td>USA</td>
-                  <td>10001</td>
-                  <td>Jane Doe</td>
-                  <td>Spouse</td>
-                  <td>1234567890</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>ABCDE1234F</td>
-                  <td>123456789012</td>
-                  <td>1990-01-01</td>
-                  <td>2020-05-25</td>
-                  <td>ABC Bank</td>
-                  <td>Main Branch</td>
-                  <td>456 Branch St</td>
-                  <td>9876543210</td>
-                  <td>ABCDEF12345</td>
-                  <td>Savings</td>
-                  <td>5000</td>
+                
+                <tr *ngFor="let c of company">
+                  <td scope="row">{{ c.employeeCode }}</td>
+                  <td>{{ c.name }}</td>
+                  <td>{{ c.email }}</td>
+                  <td>{{ c.employeeCode }}</td>
+                  <td>{{ c.employeeName }}</td>
+                  <td>{{ c.addressLine1 }}</td>
+                  <td>{{ c.addressLine2 }}</td>
+                  <td>{{ c.addressLine3 }}</td>
+                  <td>{{ c.relation1 }}</td>
+                  <td>{{ c.relation2 }}</td>
+                  <td>{{ c.expBeforeJoiningY }}</td>
+                  <td>{{ c.expBeforeJoiningM }}</td>
+                  <td>{{ c.pan }}</td>
+                  <td>{{ c.uid }}</td>
+                  <td>{{ c.birthDate }}</td>
+                  <td>{{ c.anniversary }}</td>
+                  <td>{{ c.bankName }}</td>
+                  <td>{{ c.monthlySalary }}</td>
+                  <td>{{ c.branchName }}</td>
+                  <td>{{ c.city }}</td>
+                  <td>{{ c.state }}</td>
+                  <td>{{ c.country }}</td>
+                  <td>{{ c.postalCode }}</td>
+                  <td>{{ c.contactPerson1 }}</td>
+                  <td>{{ c.mobileNumber1 }}</td>
+                  <td>{{ c.contactPerson2 }}</td>
+                  <td>{{ c.mobileNumber2 }}</td>
+                  <td>{{ c.branchAddress }}</td>
+                  <td>{{ c.accountNumber }}</td>
+                  <td>{{ c.isfCode }}</td>
+                  <td>{{ c.accountType }}</td>
                   <td>
-                    <a routerLink="/employee/4545">
+                    <a routerLink="/company/{{ c.employeeCode }}">
                       <button type="button" class="btn btn-secondary">
                         Edit
                       </button>
                     </a>
                   </td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>EMP123</td>
-                  <td>John Doe</td>
-                  <td>123 Main St</td>
-                  <td></td>
-                  <td></td>
-                  <td>New York</td>
-                  <td>New York</td>
-                  <td>USA</td>
-                  <td>10001</td>
-                  <td>Jane Doe</td>
-                  <td>Spouse</td>
-                  <td>1234567890</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>ABCDE1234F</td>
-                  <td>123456789012</td>
-                  <td>1990-01-01</td>
-                  <td>2020-05-25</td>
-                  <td>ABC Bank</td>
-                  <td>Main Branch</td>
-                  <td>456 Branch St</td>
-                  <td>9876543210</td>
-                  <td>ABCDEF12345</td>
-                  <td>Savings</td>
-                  <td>5000</td>
                   <td>
-                    <a routerLink="/employee/4545">
-                      <button type="button" class="btn btn-secondary">
-                        Edit
-                      </button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>EMP123</td>
-                  <td>John Doe</td>
-                  <td>123 Main St</td>
-                  <td></td>
-                  <td></td>
-                  <td>New York</td>
-                  <td>New York</td>
-                  <td>USA</td>
-                  <td>10001</td>
-                  <td>Jane Doe</td>
-                  <td>Spouse</td>
-                  <td>1234567890</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>ABCDE1234F</td>
-                  <td>123456789012</td>
-                  <td>1990-01-01</td>
-                  <td>2020-05-25</td>
-                  <td>ABC Bank</td>
-                  <td>Main Branch</td>
-                  <td>456 Branch St</td>
-                  <td>9876543210</td>
-                  <td>ABCDEF12345</td>
-                  <td>Savings</td>
-                  <td>5000</td>
-                  <td>
-                    <a routerLink="/employee/4545">
-                      <button type="button" class="btn btn-secondary">
-                        Edit
-                      </button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>EMP123</td>
-                  <td>John Doe</td>
-                  <td>123 Main St</td>
-                  <td></td>
-                  <td></td>
-                  <td>New York</td>
-                  <td>New York</td>
-                  <td>USA</td>
-                  <td>10001</td>
-                  <td>Jane Doe</td>
-                  <td>Spouse</td>
-                  <td>1234567890</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>ABCDE1234F</td>
-                  <td>123456789012</td>
-                  <td>1990-01-01</td>
-                  <td>2020-05-25</td>
-                  <td>ABC Bank</td>
-                  <td>Main Branch</td>
-                  <td>456 Branch St</td>
-                  <td>9876543210</td>
-                  <td>ABCDEF12345</td>
-                  <td>Savings</td>
-                  <td>5000</td>
-                  <td>
-                    <a routerLink="/employee/4545">
-                      <button type="button" class="btn btn-secondary">
-                        Edit
-                      </button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>EMP123</td>
-                  <td>John Doe</td>
-                  <td>123 Main St</td>
-                  <td></td>
-                  <td></td>
-                  <td>New York</td>
-                  <td>New York</td>
-                  <td>USA</td>
-                  <td>10001</td>
-                  <td>Jane Doe</td>
-                  <td>Spouse</td>
-                  <td>1234567890</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>ABCDE1234F</td>
-                  <td>123456789012</td>
-                  <td>1990-01-01</td>
-                  <td>2020-05-25</td>
-                  <td>ABC Bank</td>
-                  <td>Main Branch</td>
-                  <td>456 Branch St</td>
-                  <td>9876543210</td>
-                  <td>ABCDEF12345</td>
-                  <td>Savings</td>
-                  <td>5000</td>
-                  <td>
-                    <a routerLink="/employee/4545">
-                      <button type="button" class="btn btn-secondary">
-                        Edit
-                      </button>
-                    </a>
+                    <!-- Disabled Backdrop Modal -->
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="deleteCompany(c.employeeCode)"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               </tbody>

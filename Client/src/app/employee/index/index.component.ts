@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { EmployeeService } from '../employee.service';
+import { IEmployeeUser } from 'src/app/shared/Models/Master/IEmployeeUser';
+import { IEmployeeIndex } from 'src/app/shared/Models/Master/IEmployeeIndex';
 
 @Component({
   selector: 'app-index',
@@ -8,7 +11,8 @@ import { Subject } from 'rxjs';
 })
 export class IndexComponent implements OnInit{
 
-  constructor() { }
+  company: IEmployeeIndex[]  = [] ;
+  constructor(public companyService: EmployeeService) { }
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   ngOnInit(): void {
@@ -16,19 +20,35 @@ export class IndexComponent implements OnInit{
       pagingType: 'full_numbers'
     };
     this.getAllCompany();
+    
+    
    
   }
 
   getAllCompany()
   {
-   // this.companyService.GetCompany().subscribe({
-    //  next: res => {
-    //  this.company = res.result;
+    this.companyService.GetEmployee().subscribe({
+      next: res => {
+      this.company = res.result;
       this.dtTrigger.next(null);
-    //},
+      console.log(this.company);
+      
+    },
   
-    //error: err => console.log(err)
-  //}
-  //);
+    error: err => console.log(err)
+  });
+  }
+
+
+  deleteCompany(id: number)
+  {
+    console.log(id);
+    this.companyService.DeleteEmployee(id).subscribe({
+      next: res => {
+        console.log(res);
+        window.location.reload();
+      },
+      error: err => console.log(err)
+    });
   }
 }

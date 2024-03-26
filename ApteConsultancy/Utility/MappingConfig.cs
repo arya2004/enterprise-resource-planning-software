@@ -19,6 +19,11 @@ namespace ApteConsultancy.Utility
 
                 config.CreateMap<ApplicationUser, EmployeeRegisterRequestDto>().ReverseMap();
                 config.CreateMap<ApplicationUser, AssociateRegisterRequestDto>().ReverseMap();
+                config.CreateMap<GetAllAssociate, ApplicationUser>().ReverseMap();
+                config.CreateMap<ApplicationUser, GetAllEmployee>().ReverseMap();
+
+                config.CreateMap<GetAllAssociateForDropdown, ApplicationUser>().ReverseMap();
+                config.CreateMap<ApplicationUser, GetAllEmployeeForDropdown>().ReverseMap();
 
                 config.CreateMap<ProjectDto, Project>().ReverseMap();
                 config.CreateMap<CreateProjectFeesDto, ProjectDto>().ReverseMap();

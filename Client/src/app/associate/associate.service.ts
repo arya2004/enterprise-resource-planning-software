@@ -10,35 +10,33 @@ export class AssociateService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  ApiUri  = environment.apiUrl + "Company/";
+  ApiUri  = environment.apiUrl + "AuthAPI/";
  
-  postCompany(company: any)
+ 
+  postAssociate(company: any)
   {
     return this.http.post<any>(this.ApiUri , company);
   }
 
-  GetCompany()
+  GetAssociate()
   {
     console.log(this.ApiUri);
     
     
-    return this.http.get<any>(this.ApiUri + "GetAll");
+    return this.http.get<any>(this.ApiUri + "GetAllAssociate");
    
   }
   
-  GetOneCompany(name: string)
+  GetOneAssociate(id: number)
   {
-    return this.http.get<any>(this.ApiUri + "GetOne" + `?name=${name}`);
+    return this.http.get<any>(this.ApiUri + "GetOne" + `?id=${id}`);
   }
+      
+ 
 
-  UpdateCompany(company: any)
+  DeleteAssociate(name: number)
   {
-    return this.http.put<any>(this.ApiUri, company);
-  }
-
-  DeleteCompany(name: string)
-  {
-    return this.http.delete<any>(this.ApiUri + `?name=${name}`);
+    return this.http.delete<any>(this.ApiUri + `?id=${name}`);
   }
 
 }

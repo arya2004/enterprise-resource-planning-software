@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
@@ -92,7 +93,7 @@ namespace ApteConsultancy.Controllers
             {
                 _responseDto.IsSuccess = false;
                 _responseDto.Message = "incorrect field";
-                return BadRequest(  );
+                return BadRequest(_responseDto);
             }
             _responseDto.Result = Message;
             return Message;
@@ -185,6 +186,149 @@ namespace ApteConsultancy.Controllers
             _responseDto.IsSuccess = true;
             return _responseDto;
         }
+
+        [HttpGet("GetAllEmployee")]
+        public async Task<ActionResult<ResponseDto>> GetAllEmployee()
+        {
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            try
+            {
+                List<ApplicationUser> companies = await _appDbContext.ApplicationUsers.Where(_ => _.IsAssociate == false).ToListAsync();
+                List<GetAllEmployee> ass = _mapper.Map<List<GetAllEmployee>>(companies);
+                _responseDto.Result = ass;
+               
+            }
+            catch (Exception ex)
+            {
+
+                _responseDto.IsSuccess = false;
+                _responseDto.Message = ex.Message;
+            }
+            return _responseDto;
+
+        }
+
+        [HttpGet("GetAllAssociate")]
+        public async Task<ActionResult<ResponseDto>> GetAllAssociate()
+        {
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+
+            try
+            {
+
+            
+
+            List<ApplicationUser> companies = await _appDbContext.ApplicationUsers.Where(_ => _.IsAssociate == true).ToListAsync();
+            List<GetAllAssociate> ass = _mapper.Map<List<GetAllAssociate>>(companies);
+            _responseDto.Result = ass;
+            _responseDto.IsSuccess = true;
+            }
+            catch (Exception ex)
+            {
+
+                _responseDto.IsSuccess = false;
+                _responseDto.Message = ex.Message;
+            }
+            return _responseDto;
+        }
+
+        [HttpGet("GetAllEmployeeForDropdown")]
+        public async Task<ActionResult<ResponseDto>> GetAllEmployeeForDropdown()
+        {
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            try
+            {
+                List<ApplicationUser> companies = await _appDbContext.ApplicationUsers.Where(_ => _.IsAssociate == false).ToListAsync();
+                List<GetAllEmployeeForDropdown> ass = _mapper.Map<List<GetAllEmployeeForDropdown>>(companies);
+                _responseDto.Result = ass;
+
+            }
+            catch (Exception ex)
+            {
+
+                _responseDto.IsSuccess = false;
+                _responseDto.Message = ex.Message;
+            }
+            return _responseDto;
+
+        }
+
+        [HttpGet("GetAllAssociateForDropdown")]
+        public async Task<ActionResult<ResponseDto>> GetAllAssociateForDropdown()
+        {
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+
+            try
+            {
+
+
+
+                List<ApplicationUser> companies = await _appDbContext.ApplicationUsers.Where(_ => _.IsAssociate == true).ToListAsync();
+                List<GetAllAssociateForDropdown> ass = _mapper.Map<List<GetAllAssociateForDropdown>>(companies);
+                _responseDto.Result = ass;
+                _responseDto.IsSuccess = true;
+            }
+            catch (Exception ex)
+            {
+
+                _responseDto.IsSuccess = false;
+                _responseDto.Message = ex.Message;
+            }
+            return _responseDto;
+        }
+
 
     }
 }
