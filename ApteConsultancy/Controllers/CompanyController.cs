@@ -29,20 +29,20 @@ namespace ApteConsultancy.Controllers
         [HttpGet("GetAll")]
         public  ActionResult<ResponseDto> GetAll()
         {   
-            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if(roles == null  || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if(roles == null  || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
 
             List<Company> companies = _appDbContext.Companies.ToList();
             _responseDto.Result = companies;

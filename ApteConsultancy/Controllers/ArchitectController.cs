@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using ApteConsultancy.Dto.DropdownDto;
 
 namespace ApteConsultancy.Controllers
 {
@@ -25,50 +26,79 @@ namespace ApteConsultancy.Controllers
             _mapper = mapper;
         }
         [HttpGet("GetAll")]
+  
         public ActionResult<ResponseDto> GetAll()
         {
-            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if (roles == null || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if(roles == null  || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
 
-            List<Architect> Architects = _appDbContext.Architects.ToList();
-            _responseDto.Result = Architects;
+            List<Architect> companies = _appDbContext.Architects.ToList();
+            _responseDto.Result = companies;
             _responseDto.IsSuccess = true;
             return _responseDto;
         }
 
-        [HttpGet("GetOne")]
-
-        public async Task<ActionResult<ResponseDto>> Get(string? name)
+        [HttpGet("GetAllForDropdown")]
+        public async Task<ActionResult<ResponseDto>> GetAllForDropdown()
         {
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if (roles == null || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
 
-            Architect? Architects = await _appDbContext.Architects.FirstOrDefaultAsync(_ => _.CompanyName == name);
-            _responseDto.Result = Architects;
+
+            var companies = await _appDbContext.Companies.Select(u => new CompanyDropdownDto
+            {
+                CompanyId = u.CompanyId,
+                CompanyCode = u.CompanyCode,
+                Name = u.Name
+            }).ToListAsync();
+
+
+            _responseDto.Result = companies;
+            _responseDto.IsSuccess = true;
+            return _responseDto;
+        }
+
+
+
+        [HttpGet("GetOne")]
+
+        public async Task<ActionResult<ResponseDto>> Get(int id)
+        {
+            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+
+            Architect? companies = await _appDbContext.Architects.FirstOrDefaultAsync(_ => _.ArchitectId== id);
+            _responseDto.Result = companies;
             _responseDto.IsSuccess = true;
             return Ok(_responseDto);
 
@@ -77,28 +107,28 @@ namespace ApteConsultancy.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<ResponseDto>> Create([FromBody] ArchitectDto Architect)
+        public async Task<ActionResult<ResponseDto>> Create([FromBody] ArchitectDto company)
         {
 
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if (roles == null || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
 
-            Architect ArchitectToSave = _mapper.Map<Architect>(Architect);
+            Architect companyToSave = _mapper.Map<Architect>(company);
             try
             {
-                _appDbContext.Architects.Add(ArchitectToSave);
+                _appDbContext.Architects.Add(companyToSave);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Added Successfully";
                 _responseDto.IsSuccess = true;
@@ -115,45 +145,59 @@ namespace ApteConsultancy.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Edit(Architect Architect)
+        public async Task<IActionResult> Edit(Architect company)
         {
 
-            _appDbContext.Architects.Update(Architect);
-            await _appDbContext.SaveChangesAsync();
-            return Ok("Edited");
+            try
+            {
+                _appDbContext.Architects.Update(company);
+                await _appDbContext.SaveChangesAsync();
+                _responseDto.Message = "Edited Successfully";
+                _responseDto.IsSuccess = true;
+
+            }
+            catch (Exception ex)
+            {
+
+                _responseDto.Message = ex.Message;
+                _responseDto.IsSuccess = false;
+            }
+
+            return Ok(_responseDto);
+
         }
 
 
         [HttpDelete]
         [ActionName("Delete")]
-        public async Task<ActionResult<ResponseDto>> Delete(string? name)
+        public async Task<ActionResult<ResponseDto>> Delete(int id)
         {
 
 
             var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if (roles == null || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
             try
             {
-                Architect? Architect = _appDbContext.Architects.FirstOrDefault(_ => _.CompanyName == name);
-                if (Architect == null)
+                Architect? company = _appDbContext.Architects.FirstOrDefault(_ => _.ArchitectId == id);
+                if (company == null)
                 {
                     _responseDto.Message = "NOt Found";
                     _responseDto.IsSuccess = false;
                     return NotFound(_responseDto);
                 }
-                _appDbContext.Architects.Remove(Architect);
+                _appDbContext.Architects.Remove(company);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Deleted Successfully";
                 _responseDto.IsSuccess = true;

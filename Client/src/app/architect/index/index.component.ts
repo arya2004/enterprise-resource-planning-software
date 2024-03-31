@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { IArchitect } from 'src/app/shared/Models/Master/IArchitect';
+import { ArchitectService } from '../architect.service';
 
 @Component({
   selector: 'app-index',
@@ -9,7 +11,8 @@ import { Subject } from 'rxjs';
 export class IndexComponent implements OnInit{
 
  
-  constructor() { }
+  company: IArchitect[]  = [] ;
+  constructor(public companyService: ArchitectService) { }
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   ngOnInit(): void {
@@ -22,14 +25,26 @@ export class IndexComponent implements OnInit{
 
   getAllCompany()
   {
-   // this.companyService.GetCompany().subscribe({
-    //  next: res => {
-    //  this.company = res.result;
+    this.companyService.GetArchitect().subscribe({
+      next: res => {
+      this.company = res.result;
       this.dtTrigger.next(null);
-    //},
+    },
   
-    //error: err => console.log(err)
-  //}
-  //);
+    error: err => console.log(err)
+  });
+  }
+
+
+  deleteCompany(id: number)
+  {
+    console.log(id);
+    this.companyService.DeleteArchitect(id).subscribe({
+      next: res => {
+        console.log(res);
+        window.location.reload();
+      },
+      error: err => console.log(err)
+    });
   }
 }

@@ -1,8 +1,8 @@
 import { IEmployeeUser } from "./Master/IEmployeeUser";
 
-export interface EmployeeAttendance {
-    employeeAttendanceId: number;
-    employee: IEmployeeUser;
+export interface IEmployeeAttendance {
+    employee_AttendanceId: number;
+    employee?: number | null ;
     date: Date;
-    attendanceType: string;
+    attendance_Type: string;
 }

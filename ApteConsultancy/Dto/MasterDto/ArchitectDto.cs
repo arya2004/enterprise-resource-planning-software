@@ -2,7 +2,7 @@
 {
     public class ArchitectDto
     {
-        public int? ArchitectId { get; set; }
+      
         public string? CompanyName { get; set; }
         public string? AddressLine1 { get; set; }
         public string? AddressLine2 { get; set; }

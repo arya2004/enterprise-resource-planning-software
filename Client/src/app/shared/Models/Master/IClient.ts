@@ -1,5 +1,7 @@
 export interface IClient {
-   
+    clientId: number;
+    clientCode?: string | null,
+    clientName?: string | null,
     addressLine1?: string | null;
     addressLine2?: string | null;
     addressLine3?: string | null;

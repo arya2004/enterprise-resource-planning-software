@@ -27,20 +27,20 @@ namespace ApteConsultancy.Controllers
         [HttpGet("GetAll")]
         public ActionResult<ResponseDto> GetAll()
         {
-            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if (roles == null || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
 
             List<Client> Clients = _appDbContext.Clients.ToList();
             _responseDto.Result = Clients;
@@ -50,24 +50,24 @@ namespace ApteConsultancy.Controllers
 
         [HttpGet("GetOne")]
 
-        public async Task<ActionResult<ResponseDto>> Get(string? name)
+        public async Task<ActionResult<ResponseDto>> Get(int? id)
         {
-            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if (roles == null || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
 
-            Client? Clients = await _appDbContext.Clients.FirstOrDefaultAsync(_ => _.ClientName == name);
+            Client? Clients = await _appDbContext.Clients.FirstOrDefaultAsync(_ => _.ClientId == id);
             _responseDto.Result = Clients;
             _responseDto.IsSuccess = true;
             return Ok(_responseDto);
@@ -80,20 +80,20 @@ namespace ApteConsultancy.Controllers
         public async Task<ActionResult<ResponseDto>> Create([FromBody] ClientDto Client)
         {
 
-            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if (roles == null || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
 
             Client ClientToSave = _mapper.Map<Client>(Client);
             try
@@ -115,27 +115,26 @@ namespace ApteConsultancy.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<ResponseDto>> Edit(ClientDto Client)
+        public async Task<ActionResult<ResponseDto>> Edit(Client Client)
         {
-            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if (roles == null || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
      
-            Client ClientToSave = _mapper.Map<Client>(Client);
             try
             {
-                _appDbContext.Clients.Update(ClientToSave);
+                _appDbContext.Clients.Update(Client);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Updated Successfully";
                 _responseDto.IsSuccess = true;
@@ -157,34 +156,34 @@ namespace ApteConsultancy.Controllers
 
         [HttpDelete]
         [ActionName("Delete")]
-        public async Task<ActionResult<ResponseDto>> Delete(string? name)
+        public async Task<ActionResult<ResponseDto>> Delete(int? id)
         {
 
 
-            var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
-            if (roles == null || roles.Count == 0 || email == null)
-            {
-                _responseDto.Message = "invalid token";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
-            if (!roles.Contains("ADMIN"))
-            {
-                _responseDto.Message = "unauthorized";
-                _responseDto.IsSuccess = false;
-                return _responseDto;
-            }
+            //var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            //var roles = HttpContext.User.FindAll(ClaimTypes.Role)?.Select(c => c.Value).ToList();
+            //if (roles == null || roles.Count == 0 || email == null)
+            //{
+            //    _responseDto.Message = "invalid token";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
+            //if (!roles.Contains("ADMIN"))
+            //{
+            //    _responseDto.Message = "unauthorized";
+            //    _responseDto.IsSuccess = false;
+            //    return _responseDto;
+            //}
             try
             {
-                Client? Client = _appDbContext.Clients.FirstOrDefault(_ => _.ClientName == name);
-                if (Client == null)
+                Client? company = _appDbContext.Clients.FirstOrDefault(_ => _.ClientId == id);
+                if (company == null)
                 {
                     _responseDto.Message = "NOt Found";
                     _responseDto.IsSuccess = false;
                     return NotFound(_responseDto);
                 }
-                _appDbContext.Clients.Remove(Client);
+                _appDbContext.Clients.Remove(company);
                 await _appDbContext.SaveChangesAsync();
                 _responseDto.Message = "Deleted Successfully";
                 _responseDto.IsSuccess = true;
